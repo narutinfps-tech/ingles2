@@ -62,26 +62,6 @@ const INSIDE_IMAGES = [
   "https://i.ibb.co/N647P5Xh/Chat-GPT-Image-16-de-mai-de-2026-19-26-36-Copia.png"
 ];
 
-const TESTIMONIALS = [
-  {
-    name: "Adriana Silva",
-    role: "Professora 8º ano",
-    text: "Meus alunos ficaram encantados com os visuais. Finalmente pararam de mexer no celular e prestaram atenção na gramática!",
-    rating: 5
-  },
-  {
-    name: "Marcos Oliveira",
-    role: "Professor Particular",
-    text: "A facilidade de editar no Canva é o diferencial. Adapto para cada aluno em minutos. Economizo horas de planejamento.",
-    rating: 5
-  },
-  {
-    name: "Juliana Costa",
-    role: "Coordenadora Pedagógica",
-    text: "Material extremamente didático e organizado. A sequência lógica ajuda muito no aprendizado.",
-    rating: 5
-  }
-];
 
 export default function App() {
   const [openGrade, setOpenGrade] = useState<number | null>(7);
@@ -493,34 +473,73 @@ export default function App() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Testimonials Section */}
+      <section id="depoimentos" className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-5 pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:40px_40px]" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl mb-4">O que dizem os professores que já usam?</h2>
-            <p className="text-slate-600">Junte-se a centenas de educadores que transformaram suas aulas.</p>
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-xs font-black uppercase tracking-widest rounded-full mb-6"
+            >
+              Feedback da Comunidade
+            </motion.span>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 uppercase tracking-tighter">
+              Quem usa, <span className="text-primary italic">aprova</span>
+            </h2>
+            <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
+              Veja o feedback real dos professores que já transformaram suas aulas e economizaram horas de planejamento.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="p-8 rounded-3xl bg-slate-50 border border-slate-100 flex flex-col justify-between">
-                <div>
-                  <div className="flex gap-1 mb-4">
-                    {[1, 2, 3, 4, 5].map(star => <Star key={star} className="w-5 h-5 fill-secondary text-secondary" />)}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {[
+              "https://i.ibb.co/B2z14PbD/Whats-App-Image-2026-05-17-at-18-44-10.jpg",
+              "https://i.ibb.co/Q3V0GzLH/Whats-App-Image-2026-05-17-at-18-44-09-2.jpg",
+              "https://i.ibb.co/XxJWDjj6/Whats-App-Image-2026-05-17-at-18-44-09-1.jpg",
+              "https://i.ibb.co/nN3tG2FJ/Whats-App-Image-2026-05-17-at-18-44-09.jpg"
+            ].map((img, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                whileHover={{ scale: 1.02, zIndex: 30 }}
+                className="relative bg-white p-3 rounded-3xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden transition-all duration-500 cursor-zoom-in"
+              >
+                <div className="absolute inset-0 bg-linear-to-t from-slate-900/10 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+                <img 
+                  src={img} 
+                  alt={`Depoimento Profissional ${idx + 1}`} 
+                  className="w-full h-auto rounded-2xl shadow-inner block"
+                  loading="lazy"
+                />
+                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md p-2.5 rounded-2xl shadow-xl border border-white/50 transform group-hover:scale-110 transition-transform">
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <Star key={s} className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                    ))}
                   </div>
-                  <p className="italic text-lg text-slate-700 mb-6">"{t.text}"</p>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center font-bold text-primary">
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-900">{t.name}</p>
-                    <p className="text-sm text-slate-500">{t.role}</p>
-                  </div>
-                </div>
-              </div>
+              </motion.div>
             ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="inline-flex items-center gap-2 text-slate-400 font-bold"
+            >
+              <div className="w-12 h-[1px] bg-slate-200" />
+              <span>O próximo feedback pode ser o seu</span>
+              <div className="w-12 h-[1px] bg-slate-200" />
+            </motion.div>
           </div>
         </div>
       </section>
