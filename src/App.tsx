@@ -17,6 +17,7 @@ import {
   ShieldCheck, 
   Star,
   ChevronDown,
+  ExternalLink,
   Lock
 } from 'lucide-react';
 import { useState } from 'react';
@@ -92,7 +93,7 @@ export default function App() {
   return (
     <div className="min-h-screen">
       {/* Top Banner Message */}
-      <div className="bg-slate-900 text-white py-3 px-4 text-center sticky top-0 z-50">
+      <div className="bg-slate-900 text-white py-3 px-4 text-center z-50">
         <p className="text-xs md:text-sm font-bold tracking-widest uppercase flex items-center justify-center gap-2">
           <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
           Aproveite: <span className="text-amber-400">70% de desconto</span> disponível apenas hoje!
@@ -130,7 +131,7 @@ export default function App() {
                 {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
                   <div 
                     key={`row1-hero-${index}`} 
-                    className="w-[180px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+                    className="w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
                   >
                     <img 
                       src={img} 
@@ -156,7 +157,7 @@ export default function App() {
                 {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
                   <div 
                     key={`row2-hero-${index}`} 
-                    className="w-[180px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+                    className="w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
                   >
                     <img 
                       src={img} 
@@ -214,40 +215,82 @@ export default function App() {
               ].map((item, idx) => (
                 <motion.div 
                   key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="flex items-start gap-4 p-4 rounded-xl hover:bg-white transition-colors"
+                  className="flex flex-col items-center text-center p-6 rounded-2xl hover:bg-white transition-all hover:shadow-lg border border-transparent hover:border-slate-100"
                 >
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <item.icon className="w-6 h-6 text-primary" />
+                  <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+                    <item.icon className="w-7 h-7 text-primary" />
                   </div>
-                  <p className="text-lg font-medium text-slate-700 pt-1">{item.text}</p>
+                  <p className="text-lg font-bold text-slate-800 leading-tight">{item.text}</p>
                 </motion.div>
               ))}
             </div>
 
-            <div className="relative">
-              <div className="bg-white p-4 rounded-3xl shadow-xl overflow-hidden">
-                <div className="aspect-video bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden">
-                   <img 
-                      src={`https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2671&auto=format&fit=crop`}
-                      alt="Canva editing" 
-                      className="w-full h-full object-cover"
-                    />
-                </div>
-                <div className="mt-4 flex justify-center gap-8">
-                  <div className="flex items-center gap-2 text-sm font-bold text-slate-500">
-                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-[10px] text-white">C</div>
-                    Edite no Canva
+            {/* Representational Mockup */}
+            <div className="relative h-[400px] md:h-[500px] flex items-center justify-center">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="relative w-full max-w-md"
+              >
+                {/* Background Cards (Fanned out) */}
+                <motion.div 
+                  animate={{ rotate: -15, x: -60, y: 20 }}
+                  className="absolute inset-0 bg-white p-2 rounded-2xl shadow-xl border border-slate-100 transform -rotate-12 z-10"
+                >
+                  <img src={SLIDE_IMAGES[0]} alt="Slide 1" className="rounded-xl w-full h-auto" />
+                </motion.div>
+                
+                <motion.div 
+                  animate={{ rotate: 10, x: 60, y: -20 }}
+                  className="absolute inset-0 bg-white p-2 rounded-2xl shadow-xl border border-slate-100 transform rotate-6 z-10"
+                >
+                  <img src={SLIDE_IMAGES[1]} alt="Slide 2" className="rounded-xl w-full h-auto" />
+                </motion.div>
+
+                {/* Main Focus Card */}
+                <motion.div 
+                  whileHover={{ y: -10 }}
+                  className="relative bg-white p-3 rounded-2xl shadow-2xl border border-slate-100 z-20"
+                >
+                  <div className="absolute -top-4 -right-4 bg-secondary text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg z-30 animate-bounce">
+                    100% EDITÁVEL
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-bold text-slate-500">
-                    <div className="w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center text-[10px] text-white">P</div>
-                    P. Point
+                  <img src={INSIDE_IMAGES[3]} alt="Main Slide" className="rounded-xl w-full h-auto" />
+                  
+                  <div className="mt-4 flex items-center justify-center gap-4 py-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">C</div>
+                      <span className="text-xs font-bold text-slate-500">Canva</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center text-[10px] text-white">P</div>
+                      <span className="text-xs font-bold text-slate-500">PowerPoint</span>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+
+                {/* Decorative floating elements */}
+                <motion.div 
+                  animate={{ y: [0, -20, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute -bottom-10 -left-10 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-30 hidden md:block"
+                >
+                   <div className="flex items-center gap-3">
+                     <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                       <CheckCircle2 className="w-6 h-6" />
+                     </div>
+                     <div>
+                       <p className="text-xs font-bold text-slate-400 uppercase">Qualidade</p>
+                       <p className="text-sm font-black text-slate-800 tracking-tight">PREMIUM</p>
+                     </div>
+                   </div>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -369,7 +412,7 @@ export default function App() {
             {[...INSIDE_IMAGES, ...INSIDE_IMAGES].map((img, index) => (
               <div 
                 key={`inside-1-${index}`} 
-                className="w-[220px] shrink-0 bg-white p-2 rounded-2xl shadow-lg border border-slate-100"
+                className="w-[280px] shrink-0 bg-white p-2 rounded-2xl shadow-lg border border-slate-100"
               >
                 <img 
                   src={img} 
@@ -394,7 +437,7 @@ export default function App() {
             {[...INSIDE_IMAGES, ...INSIDE_IMAGES].map((img, index) => (
               <div 
                 key={`inside-2-${index}`} 
-                className="w-[220px] shrink-0 bg-white p-2 rounded-2xl shadow-lg border border-slate-100"
+                className="w-[280px] shrink-0 bg-white p-2 rounded-2xl shadow-lg border border-slate-100"
               >
                 <img 
                   src={img} 
@@ -541,7 +584,10 @@ export default function App() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <button className="w-full bg-secondary hover:bg-emerald-600 text-white py-6 rounded-2xl font-black text-xl md:text-2xl shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3 active:translate-y-1">
+                  <button 
+                    onClick={() => window.location.href = "https://pay.cakto.com.br/ec4jzvs_888538"}
+                    className="w-full bg-secondary hover:bg-emerald-600 text-white py-6 rounded-2xl font-black text-xl md:text-2xl shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3 active:translate-y-1"
+                  >
                     QUERO MEU ACESSO AGORA
                     <ChevronRight className="w-6 h-6" />
                   </button>
@@ -620,6 +666,77 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+              Perguntas Frequentes
+            </h2>
+            <p className="text-slate-600 font-medium">
+              Tudo o que você precisa saber sobre o material antes de garantir seu acesso.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "Como receberei o material?",
+                a: "O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com o link para baixar os materiais e os links de edição do Canva direto na plataforma."
+              },
+              {
+                q: "Posso editar os slides?",
+                a: "Sim! Os slides são 100% editáveis no Canva. Você pode mudar absolutamente tudo: cores, textos, imagens e adaptar para a realidade da sua turma."
+              },
+              {
+                q: "Preciso ter a versão paga do Canva?",
+                a: "Não. Os materiais foram criados pensando em quem usa a versão gratuita do Canva. Você não precisará pagar nada a mais para editar ou usar."
+              },
+              {
+                q: "O material serve para qual série?",
+                a: "O foco principal é o Ensino Fundamental II (6º ao 9º ano), mas os tópicos de gramática são a base necessária para qualquer nível iniciante (A1/A2)."
+              },
+              {
+                q: "Por quanto tempo terei acesso?",
+                a: "O acesso é vitalício. Uma vez adquirido, o material é seu para sempre, incluindo as atualizações que fizermos nesta coleção."
+              }
+            ].map((faq, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden"
+              >
+                <details className="group">
+                  <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                    <span className="text-lg font-bold text-slate-800 pr-4">{faq.q}</span>
+                    <span className="transition-transform group-open:rotate-180 shrink-0">
+                      <ChevronDown className="w-5 h-5 text-primary" />
+                    </span>
+                  </summary>
+                  <div className="px-6 pb-6 text-slate-600 leading-relaxed font-medium">
+                    {faq.a}
+                  </div>
+                </details>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center bg-slate-50 p-8 rounded-3xl border border-slate-100">
+            <p className="text-slate-700 font-bold mb-4">Ainda tem alguma dúvida?</p>
+            <a 
+              href="https://wa.me/5500000000000" 
+              className="inline-flex items-center gap-2 text-primary font-black hover:underline"
+            >
+              Falar com suporte no WhatsApp
+              <ExternalLink className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>
