@@ -149,7 +149,7 @@ export default function App() {
                 initial={{ x: "-50%" }}
                 animate={{ x: ["-50%", "0%"] }}
                 transition={{ 
-                  duration: 25, 
+                  duration: 40, 
                   ease: "linear", 
                   repeat: Infinity 
                 }}
@@ -177,7 +177,7 @@ export default function App() {
             >
               <button 
                 onClick={scrollToPricing}
-                className="bg-secondary hover:bg-emerald-600 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all btn-shadow flex items-center gap-3"
+                className="bg-secondary hover:bg-emerald-700 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all btn-shadow flex items-center gap-3"
               >
                 Quero garantir meus materiais
                 <ChevronRight className="w-6 h-6" />
@@ -229,66 +229,62 @@ export default function App() {
               ))}
             </div>
 
-            {/* Representational Mockup */}
-            <div className="relative h-[400px] md:h-[500px] flex items-center justify-center">
+            {/* Focused Premium Mockup */}
+            <div className="relative mt-8 md:mt-16 flex items-center justify-center">
               <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative w-full max-w-md"
+                transition={{ duration: 0.8 }}
+                className="relative w-full max-w-4xl"
               >
-                {/* Background Cards (Fanned out) */}
-                <motion.div 
-                  animate={{ rotate: -15, x: -60, y: 20 }}
-                  className="absolute inset-0 bg-white p-2 rounded-2xl shadow-xl border border-slate-100 transform -rotate-12 z-10"
-                >
-                  <img src={SLIDE_IMAGES[0]} alt="Slide 1" className="rounded-xl w-full h-auto" />
-                </motion.div>
+                {/* Background Glow */}
+                <div className="absolute -inset-10 bg-primary/30 rounded-full blur-[120px] -z-10 opacity-40 animate-pulse" />
                 
-                <motion.div 
-                  animate={{ rotate: 10, x: 60, y: -20 }}
-                  className="absolute inset-0 bg-white p-2 rounded-2xl shadow-xl border border-slate-100 transform rotate-6 z-10"
+                {/* Main Product Image */}
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="relative z-20 overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)]"
                 >
-                  <img src={SLIDE_IMAGES[1]} alt="Slide 2" className="rounded-xl w-full h-auto" />
-                </motion.div>
-
-                {/* Main Focus Card */}
-                <motion.div 
-                  whileHover={{ y: -10 }}
-                  className="relative bg-white p-3 rounded-2xl shadow-2xl border border-slate-100 z-20"
-                >
-                  <div className="absolute -top-4 -right-4 bg-secondary text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg z-30 animate-bounce">
-                    100% EDITÁVEL
-                  </div>
-                  <img src={INSIDE_IMAGES[3]} alt="Main Slide" className="rounded-xl w-full h-auto" />
+                  <img 
+                    src="https://i.ibb.co/dw9d17zW/7ca6897b-0234-4924-b33d-f4b259bd64f6-Photoroom.png" 
+                    alt="Premium Material Mockup" 
+                    className="w-full h-auto block"
+                  />
                   
-                  <div className="mt-4 flex items-center justify-center gap-4 py-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">C</div>
-                      <span className="text-xs font-bold text-slate-500">Canva</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center text-[10px] text-white">P</div>
-                      <span className="text-xs font-bold text-slate-500">PowerPoint</span>
-                    </div>
+                  {/* Floating badge */}
+                  <div className="absolute top-6 right-6 md:top-10 md:right-10 bg-secondary text-white px-6 py-3 rounded-full font-black text-sm md:text-lg shadow-xl animate-bounce">
+                    70% OFF HOJE
                   </div>
                 </motion.div>
 
                 {/* Decorative floating elements */}
                 <motion.div 
-                  animate={{ y: [0, -20, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute -bottom-10 -left-10 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-30 hidden md:block"
+                  animate={{ y: [0, -15, 0], rotate: [0, -2, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-12 -left-4 md:-left-20 bg-white p-4 rounded-3xl shadow-2xl border border-slate-100 z-30 hidden sm:flex items-center gap-4"
                 >
-                   <div className="flex items-center gap-3">
-                     <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
-                       <CheckCircle2 className="w-6 h-6" />
-                     </div>
-                     <div>
-                       <p className="text-xs font-bold text-slate-400 uppercase">Qualidade</p>
-                       <p className="text-sm font-black text-slate-800 tracking-tight">PREMIUM</p>
-                     </div>
-                   </div>
+                  <div className="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center">
+                    <Star className="w-7 h-7 text-amber-500 fill-amber-500" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Avaliação</p>
+                    <p className="text-lg font-black text-slate-800 tracking-tight">VIP</p>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  animate={{ y: [0, 15, 0], rotate: [0, 2, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  className="absolute -bottom-10 -right-4 md:-right-20 bg-white p-4 rounded-3xl shadow-2xl border border-slate-100 z-30 hidden sm:flex items-center gap-4"
+                >
+                  <div className="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center">
+                    <CheckCircle2 className="w-7 h-7 text-emerald-600" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Acesso</p>
+                    <p className="text-lg font-black text-slate-800 tracking-tight">IMEDIATO</p>
+                  </div>
                 </motion.div>
               </motion.div>
             </div>
@@ -305,34 +301,34 @@ export default function App() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20">
-              <div className="bg-accent w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="bg-white/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Download className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl mb-4 text-secondary font-black tracking-tight">+ DE 70 AULAS PRONTAS</h3>
+              <h3 className="text-2xl mb-4 text-emerald-300 font-black tracking-tight">+ DE 70 AULAS PRONTAS</h3>
               <ul className="text-left space-y-4">
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-secondary shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
                   <span>Mais de 70 aulas editáveis no Canva e no PowerPoint, com conteúdos do 7º, 8º e 9º ano.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-secondary shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
                   <span>Slides super ilustrados e visualmente atrativos para manter o engajamento.</span>
                 </li>
               </ul>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20">
-              <div className="bg-secondary w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="bg-white/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <BookOpen className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl mb-4 text-accent font-black tracking-tight">BANCO DE ATIVIDADES</h3>
+              <h3 className="text-2xl mb-4 text-amber-300 font-black tracking-tight">BANCO DE ATIVIDADES</h3>
               <ul className="text-left space-y-4">
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-secondary shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
                   <span>Listas de exercícios com gabarito para cada tema gramatical.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-secondary shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
                   <span>Material em PDF e Word para você adaptar como precisar.</span>
                 </li>
               </ul>
@@ -429,7 +425,7 @@ export default function App() {
             initial={{ x: "-50%" }}
             animate={{ x: ["-50%", "0%"] }}
             transition={{ 
-              duration: 26, // Desacelerado
+              duration: 45, // Mais lento
               ease: "linear", 
               repeat: Infinity 
             }}
@@ -586,7 +582,7 @@ export default function App() {
                 >
                   <button 
                     onClick={() => window.location.href = "https://pay.cakto.com.br/ec4jzvs_888538"}
-                    className="w-full bg-secondary hover:bg-emerald-600 text-white py-6 rounded-2xl font-black text-xl md:text-2xl shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3 active:translate-y-1"
+                    className="w-full bg-secondary hover:bg-emerald-700 text-white py-6 rounded-2xl font-black text-xl md:text-2xl shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3 active:translate-y-1"
                   >
                     QUERO MEU ACESSO AGORA
                     <ChevronRight className="w-6 h-6" />
