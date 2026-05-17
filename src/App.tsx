@@ -91,7 +91,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Top Banner Message */}
       <div className="bg-slate-900 text-white py-3 px-4 text-center z-50">
         <p className="text-xs md:text-sm font-bold tracking-widest uppercase flex items-center justify-center gap-2">
@@ -198,7 +198,7 @@ export default function App() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 bg-slate-100">
+      <section className="py-24 bg-slate-100 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl mb-4">Nossos materiais são para <span className="text-primary italic">profs</span> que...</h2>
@@ -730,7 +730,7 @@ export default function App() {
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">Ainda tem dúvidas?</h3>
                 <p className="text-slate-300 text-lg mb-6">Estou online agora para te ajudar a tomar a melhor decisão!</p>
                 <a 
-                  href="https://wa.me/5598843357" 
+                  href="https://wa.me/559884335718" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-lg transition-all shadow-lg hover:shadow-emerald-500/20 group-hover:-translate-y-1"
@@ -753,7 +753,7 @@ export default function App() {
       >
         <div className="absolute -inset-4 bg-emerald-500/20 rounded-full blur-xl group-hover:bg-emerald-500/40 transition-all animate-pulse" />
         <a 
-          href="https://wa.me/5598843357" 
+          href="https://wa.me/559884335718" 
           target="_blank"
           rel="noopener noreferrer"
           className="relative bg-emerald-500 hover:bg-emerald-600 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-2xl transition-all hover:scale-110 active:scale-95"
@@ -780,7 +780,7 @@ export default function App() {
             <div className="flex gap-8 text-sm font-medium text-slate-500">
                <a href="#" className="hover:text-primary">Termos de Uso</a>
                <a href="#" className="hover:text-primary">Privacidade</a>
-               <a href="https://wa.me/5598843357" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Ajuda</a>
+               <a href="https://wa.me/559884335718" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Ajuda</a>
             </div>
 
             <p className="text-sm text-slate-400">© 2024 Academia de Inglês. Todos os direitos reservados.</p>
