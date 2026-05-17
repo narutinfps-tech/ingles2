@@ -1,0 +1,8 @@
+{
+  "name": "English Slides Pack - Material Editável Canva",
+  "description": "Landing page de alta conversão para venda de packs de slides de inglês editáveis no Canva, focados em Ensino Fundamental II.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
