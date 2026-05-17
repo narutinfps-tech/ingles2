@@ -296,7 +296,7 @@ export default function App() {
       <section className="py-24 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl mb-12">
-            A <span className="bg-white text-primary px-3 rounded-lg">English Pack</span> é uma plataforma online com materiais prontos para professores de Ensino Fundamental II.
+            A <span className="bg-white text-primary px-3 rounded-lg">Academia de Inglês</span> é uma plataforma online com materiais prontos para professores de Ensino Fundamental II.
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -629,7 +629,7 @@ export default function App() {
                     <span className="absolute -left-2 -top-4 text-6xl text-slate-100 font-serif">"</span>
                     <p className="text-slate-600 text-lg leading-relaxed mb-8 relative z-10">
                       Temos tanta confiança na qualidade dos nossos slides que oferecemos 
-                      uma garantia de 7 dias. Se por qualquer motivo você não achar que o English Pack 
+                      uma garantia de 7 dias. Se por qualquer motivo você não achar que a Academia de Inglês 
                       facilitou suas aulas, basta nos enviar um e-mail. 
                       <span className="text-slate-900 font-bold block mt-2 text-xl">Devolvemos 100% do seu dinheiro, sem perguntas.</span>
                     </p>
@@ -644,21 +644,6 @@ export default function App() {
                       <Lock className="w-3 h-3" /> Pagamento Seguro via Criptografia SSL
                     </span>
                   </div>
-                </div>
-              </div>
-              
-              <div className="mt-8 flex justify-center gap-8 saturate-0 opacity-40">
-                <div className="flex flex-col items-center gap-1">
-                   <div className="h-8 w-12 bg-slate-300 rounded" />
-                   <span className="text-[8px] font-bold">VISA</span>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                   <div className="h-8 w-12 bg-slate-300 rounded" />
-                   <span className="text-[8px] font-bold">MASTER</span>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                   <div className="h-8 w-12 bg-slate-300 rounded" />
-                   <span className="text-[8px] font-bold">PIX</span>
                 </div>
               </div>
             </div>
@@ -724,35 +709,81 @@ export default function App() {
             ))}
           </div>
 
-          <div className="mt-16 text-center bg-slate-50 p-8 rounded-3xl border border-slate-100">
-            <p className="text-slate-700 font-bold mb-4">Ainda tem alguma dúvida?</p>
-            <a 
-              href="https://wa.me/5500000000000" 
-              className="inline-flex items-center gap-2 text-primary font-black hover:underline"
-            >
-              Falar com suporte no WhatsApp
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </div>
+          {/* Interactive Support Block */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="mt-16 bg-linear-to-br from-slate-900 to-slate-800 p-8 md:p-12 rounded-[3rem] shadow-2xl relative overflow-hidden group"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-3xl -mr-32 -mt-32 rounded-full" />
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
+              <div className="relative">
+                <div className="w-24 h-24 rounded-full bg-slate-700 border-4 border-slate-600 p-1 overflow-hidden">
+                   <div className="w-full h-full rounded-full bg-primary flex items-center justify-center text-3xl">👋</div>
+                </div>
+                <div className="absolute bottom-1 right-1 w-6 h-6 bg-emerald-500 border-4 border-slate-800 rounded-full animate-pulse" />
+              </div>
+
+              <div className="text-center md:text-left flex-1">
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">Ainda tem dúvidas?</h3>
+                <p className="text-slate-300 text-lg mb-6">Estou online agora para te ajudar a tomar a melhor decisão!</p>
+                <a 
+                  href="https://wa.me/5598843357" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-lg transition-all shadow-lg hover:shadow-emerald-500/20 group-hover:-translate-y-1"
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  CHAMAR NO WHATSAPP
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
+
+      {/* Floating Interactive Button */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 2 }}
+        className="fixed bottom-6 right-6 z-50 group"
+      >
+        <div className="absolute -inset-4 bg-emerald-500/20 rounded-full blur-xl group-hover:bg-emerald-500/40 transition-all animate-pulse" />
+        <a 
+          href="https://wa.me/5598843357" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative bg-emerald-500 hover:bg-emerald-600 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-2xl transition-all hover:scale-110 active:scale-95"
+        >
+          <MessageCircle className="w-8 h-8 fill-white/20" />
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white animate-bounce">1</span>
+        </a>
+        
+        {/* Tooltip */}
+        <div className="absolute bottom-full right-0 mb-4 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 whitespace-nowrap bg-white text-slate-800 px-4 py-2 rounded-xl shadow-xl border border-slate-100 font-bold text-sm">
+          Precisa de ajuda? 🚀
+        </div>
+      </motion.div>
 
       {/* Footer */}
       <footer className="py-12 bg-slate-50 border-t border-slate-200">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg leading-none">E</div>
-              <span className="font-display font-bold text-lg tracking-tight">English<span className="text-primary">Pack</span></span>
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg leading-none">A</div>
+              <span className="font-display font-bold text-lg tracking-tight">Academia de <span className="text-primary">Inglês</span></span>
             </div>
             
             <div className="flex gap-8 text-sm font-medium text-slate-500">
                <a href="#" className="hover:text-primary">Termos de Uso</a>
                <a href="#" className="hover:text-primary">Privacidade</a>
-               <a href="#" className="hover:text-primary">Ajuda</a>
+               <a href="https://wa.me/5598843357" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Ajuda</a>
             </div>
 
-            <p className="text-sm text-slate-400">© 2024 English Pack. Todos os direitos reservados.</p>
+            <p className="text-sm text-slate-400">© 2024 Academia de Inglês. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
