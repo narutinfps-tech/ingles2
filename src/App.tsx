@@ -16,7 +16,8 @@ import {
   Download, 
   ShieldCheck, 
   Star,
-  ChevronDown
+  ChevronDown,
+  Lock
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -40,6 +41,24 @@ const SLIDE_IMAGES = [
   "https://i.ibb.co/PvB5xVzc/Chat-GPT-Image-16-de-mai-de-2026-17-29-51.png",
   "https://i.ibb.co/DPzzRsJ2/Chat-GPT-Image-16-de-mai-de-2026-17-16-06.png",
   "https://i.ibb.co/bw1Pr8j/Chat-GPT-Image-16-de-mai-de-2026-17-01-49.png"
+];
+
+const INSIDE_IMAGES = [
+  "https://i.ibb.co/RGdYYPWK/Chat-GPT-Image-17-de-mai-de-2026-13-48-26-Copia.png",
+  "https://i.ibb.co/27Z5n9ts/Chat-GPT-Image-17-de-mai-de-2026-13-47-39-Copia.png",
+  "https://i.ibb.co/wXbbNMr/Chat-GPT-Image-17-de-mai-de-2026-13-47-28-Copia.png",
+  "https://i.ibb.co/dJwmBf6B/Chat-GPT-Image-16-de-mai-de-2026-19-26-47.png",
+  "https://i.ibb.co/LzTJJv6V/Chat-GPT-Image-16-de-mai-de-2026-19-19-46.png",
+  "https://i.ibb.co/d4HkZZQR/Chat-GPT-Image-16-de-mai-de-2026-18-25-11-1.png",
+  "https://i.ibb.co/0jXgpDBk/Chat-GPT-Image-16-de-mai-de-2026-17-34-32.png",
+  "https://i.ibb.co/XZbwz2H5/Chat-GPT-Image-16-de-mai-de-2026-17-34-22.png",
+  "https://i.ibb.co/tpKfBnZV/Chat-GPT-Image-16-de-mai-de-2026-17-33-46.png",
+  "https://i.ibb.co/r2RbNwwh/Chat-GPT-Image-16-de-mai-de-2026-17-20-37.png",
+  "https://i.ibb.co/svqwZP5C/Chat-GPT-Image-16-de-mai-de-2026-17-04-51.png",
+  "https://i.ibb.co/5xxkWRW4/Chat-GPT-Image-16-de-mai-de-2026-17-04-16.png",
+  "https://i.ibb.co/JWNVyQh3/Chat-GPT-Image-16-de-mai-de-2026-17-04-07.png",
+  "https://i.ibb.co/JFvSqxMy/Chat-GPT-Image-16-de-mai-de-2026-19-27-58-Copia.png",
+  "https://i.ibb.co/N647P5Xh/Chat-GPT-Image-16-de-mai-de-2026-19-26-36-Copia.png"
 ];
 
 const TESTIMONIALS = [
@@ -88,12 +107,67 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-8">
               Tenha acesso aos <span className="text-primary">slides prontos</span> de Inglês que vão despertar a atenção dos seus alunos.
             </h1>
-            <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-600 mb-10 leading-relaxed">
-              Aulas prontas, visuais e 100% editáveis no Canva para ensinar gramática de forma simples, divertida e organizada no Ensino Fundamental II.
-            </p>
+
+            {/* Infinite Carousel - Moved here for high impact */}
+            <div className="py-8 mb-10 overflow-hidden relative flex flex-col gap-4">
+              {/* Gradients para suavizar as bordas */}
+              <div className="absolute left-0 top-0 bottom-0 w-12 bg-linear-to-r from-white to-transparent z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-12 bg-linear-to-l from-white to-transparent z-10" />
+              
+              {/* Primeira Fileira - VELOCIDADE MÉDIA/LENTA para visualização */}
+              <motion.div 
+                className="flex whitespace-nowrap gap-3 items-center w-max"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ 
+                  duration: 20, 
+                  ease: "linear", 
+                  repeat: Infinity 
+                }}
+              >
+                {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
+                  <div 
+                    key={`row1-hero-${index}`} 
+                    className="w-[180px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+                  >
+                    <img 
+                      src={img} 
+                      alt="Slide Preview" 
+                      className="rounded-lg w-full h-auto block object-contain"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* Segunda Fileira - DIREÇÃO OPOSTA */}
+              <motion.div 
+                className="flex whitespace-nowrap gap-3 items-center w-max"
+                initial={{ x: "-50%" }}
+                animate={{ x: ["-50%", "0%"] }}
+                transition={{ 
+                  duration: 25, 
+                  ease: "linear", 
+                  repeat: Infinity 
+                }}
+              >
+                {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
+                  <div 
+                    key={`row2-hero-${index}`} 
+                    className="w-[180px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+                  >
+                    <img 
+                      src={img} 
+                      alt="Slide Preview" 
+                      className="rounded-lg w-full h-auto block object-contain"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
 
             <motion.div 
               whileHover={{ scale: 1.05 }}
@@ -117,64 +191,6 @@ export default function App() {
           </motion.div>
         </div>
       </section>
-
-      {/* Infinite Carousel - "Esteira Infinita" Multi-Row */}
-      <div className="py-6 bg-slate-50 border-y border-slate-200 overflow-hidden relative flex flex-col gap-3">
-        {/* Gradients para suavizar as bordas */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 bg-linear-to-r from-slate-50 to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-12 bg-linear-to-l from-slate-50 to-transparent z-10" />
-        
-        {/* Primeira Fileira - SUPER RÁPIDA */}
-        <motion.div 
-          className="flex whitespace-nowrap gap-3 items-center"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ 
-            duration: 8, // Muito mais rápido
-            ease: "linear", 
-            repeat: Infinity 
-          }}
-        >
-          {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
-            <div 
-              key={`row1-${index}`} 
-              className="w-[280px] shrink-0 bg-white p-1 rounded-lg shadow-sm border border-slate-200"
-            >
-              <img 
-                src={img} 
-                alt="Preview 1" 
-                className="rounded-md w-full h-auto block"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Segunda Fileira - DIREÇÃO OPOSTA E RÁPIDA */}
-        <motion.div 
-          className="flex whitespace-nowrap gap-3 items-center"
-          initial={{ x: "-50%" }}
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ 
-            duration: 10, // Velocidade alta e variada
-            ease: "linear", 
-            repeat: Infinity 
-          }}
-        >
-          {[...SLIDE_IMAGES, ...SLIDE_IMAGES].reverse().map((img, index) => (
-            <div 
-              key={`row2-${index}`} 
-              className="w-[280px] shrink-0 bg-white p-1 rounded-lg shadow-sm border border-slate-200"
-            >
-              <img 
-                src={img} 
-                alt="Preview 2" 
-                className="rounded-md w-full h-auto block"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          ))}
-        </motion.div>
-      </div>
 
       <section className="py-12 bg-white text-center">
         <p className="text-slate-400 font-display font-medium tracking-widest text-sm uppercase">Materiais lúdicos, coloridos e 100% didáticos</p>
@@ -333,6 +349,74 @@ export default function App() {
         </div>
       </section>
 
+      {/* New Section: What's Inside - Dynamic Carousel */}
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-black mb-4">Veja como é por dentro dos <span className="text-primary italic">nossos slides</span></h2>
+          <p className="text-slate-600">Material organizado, estético e pronto para dar aula hoje mesmo.</p>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <motion.div 
+            className="flex whitespace-nowrap gap-3 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ 
+              duration: 22, // Desacelerado
+              ease: "linear", 
+              repeat: Infinity 
+            }}
+          >
+            {[...INSIDE_IMAGES, ...INSIDE_IMAGES].map((img, index) => (
+              <div 
+                key={`inside-1-${index}`} 
+                className="w-[220px] shrink-0 bg-white p-2 rounded-2xl shadow-lg border border-slate-100"
+              >
+                <img 
+                  src={img} 
+                  alt="Material detalhe" 
+                  className="rounded-xl w-full h-auto block"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div 
+            className="flex whitespace-nowrap gap-3 w-max"
+            initial={{ x: "-50%" }}
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{ 
+              duration: 26, // Desacelerado
+              ease: "linear", 
+              repeat: Infinity 
+            }}
+          >
+            {[...INSIDE_IMAGES, ...INSIDE_IMAGES].map((img, index) => (
+              <div 
+                key={`inside-2-${index}`} 
+                className="w-[220px] shrink-0 bg-white p-2 rounded-2xl shadow-lg border border-slate-100"
+              >
+                <img 
+                  src={img} 
+                  alt="Material detalhe" 
+                  className="rounded-xl w-full h-auto block"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+        
+        <div className="text-center mt-12">
+           <button 
+             onClick={scrollToPricing}
+             className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all animate-pulse shadow-lg"
+           >
+             QUERO ESSE MATERIAL COMPLETO
+           </button>
+        </div>
+      </section>
+
       {/* Grade Accordion */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -402,99 +486,139 @@ export default function App() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-slate-900 relative text-white">
-        <div className="absolute inset-0 overflow-hidden opacity-20">
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary rounded-full blur-[120px]" />
-        </div>
-        
+      {/* Pricing Section - Redesigned with Light Colors and High Conversion Layout */}
+      <section id="pricing" className="py-24 bg-linear-to-b from-white via-primary/5 to-white relative">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto bg-white text-slate-900 rounded-[50px] p-12 shadow-2xl relative">
-            <div className="absolute top-0 right-10 -translate-y-1/2 bg-accent text-white px-6 py-2 rounded-full font-bold shadow-lg animate-bounce">
-              OFERTA EXCLUSIVA: 15% OFF
-            </div>
-
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl mb-6">Comece agora a transformar suas aulas</h2>
-              <div className="flex justify-center items-baseline gap-2 mb-2">
-                <span className="text-slate-400 line-through text-xl">De R$ 97,00</span>
-                <span className="text-primary font-black text-5xl md:text-7xl tracking-tighter">R$ 27,90</span>
-              </div>
-              <p className="text-slate-500 font-medium">Pagamento único • Acesso vitalício</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 mb-10">
-              <div className="space-y-4">
-                {[
-                  "+70 Aulas em Slides Profissionais",
-                  "Material 100% Editável no Canva",
-                  "Biblioteca de Atividades Inclusa",
-                  "Bônus: Planejadores de Aula",
-                  "Atualizações Gratuitas por 1 ano"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 font-medium text-slate-700">
-                    <CheckCircle2 className="w-6 h-6 text-secondary shrink-0" /> {item}
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col justify-center items-center p-6 bg-slate-50 rounded-3xl border border-slate-100">
-                <ShieldCheck className="w-12 h-12 text-primary mb-4" />
-                <p className="text-sm text-center text-slate-500 mb-4 tracking-tighter uppercase font-bold">Pagamento 100% Seguro</p>
-                <div className="flex justify-center gap-3">
-                  <div className="w-10 h-6 bg-slate-200 rounded" />
-                  <div className="w-10 h-6 bg-slate-200 rounded" />
-                  <div className="w-10 h-6 bg-slate-200 rounded" />
-                </div>
-              </div>
-            </div>
-
+          <div className="max-w-xl mx-auto">
+            {/* Oferta Card */}
             <motion.div 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="text-center"
-            >
-              <button className="w-full bg-secondary hover:bg-emerald-600 text-white py-6 rounded-3xl font-black text-2xl shadow-xl transition-all btn-shadow mb-6">
-                QUERO MEU ACESSO AGORA
-              </button>
-              <p className="text-slate-400 text-sm flex items-center justify-center gap-2">
-                <Sparkles className="w-4 h-4" /> Garantia incondicional de 7 dias
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="mt-20 flex flex-col items-center text-center max-w-2xl mx-auto border-t border-white/10 pt-16 px-4">
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
-              className="relative mb-10"
+              className="bg-white rounded-[40px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden relative"
             >
-              <div className="w-44 h-44 rounded-full bg-linear-to-br from-amber-300 via-yellow-500 to-amber-600 flex flex-col items-center justify-center shadow-[0_0_60px_-15px_rgba(245,158,11,0.6)] border-8 border-slate-900/50">
-                <div className="flex gap-1 mb-2">
-                  {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3 h-3 fill-white text-white" />)}
+              {/* Badge Flutuante */}
+              <div className="bg-accent text-white px-6 py-2 font-black text-sm absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl shadow-md z-20 whitespace-nowrap">
+                OFERTA LIMITADA: 70% OFF
+              </div>
+
+              <div className="p-8 md:p-12 pt-16 text-center">
+                <h2 className="text-3xl font-display font-black text-slate-900 mb-2 leading-tight">
+                  Tudo o que você precisa por um preço simbólico
+                </h2>
+                <div className="w-16 h-1.5 bg-primary/20 mx-auto rounded-full mb-8" />
+
+                {/* Preço Layout Corrigido */}
+                <div className="flex flex-col items-center justify-center mb-8">
+                  <span className="text-slate-400 line-through text-lg font-medium mb-1">De R$ 97,00</span>
+                  <div className="flex items-start justify-center gap-1">
+                    <span className="text-primary font-bold text-2xl mt-2">R$</span>
+                    <span className="text-primary font-black text-7xl md:text-8xl tracking-tighter leading-none">27,90</span>
+                  </div>
+                  <p className="inline-block mt-4 text-secondary font-bold bg-secondary/10 px-4 py-1.5 rounded-full text-sm">
+                    Acesso Vitalício • Pagamento Único
+                  </p>
                 </div>
-                <div className="flex flex-col items-center leading-none">
-                  <span className="text-5xl font-black tracking-tighter">7</span>
-                  <span className="text-lg font-black tracking-tight mt-1">DIAS</span>
+
+                {/* Lista de Benefícios */}
+                <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
+                  {[
+                    "+70 Aulas em Slides de Inglês",
+                    "Material 100% Editável no Canva",
+                    "Biblioteca de Atividades Inclusa",
+                    "Acesso Imediato no E-mail"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 font-semibold text-slate-700 text-sm md:text-base">
+                      <div className="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
+                        <CheckCircle2 className="w-4 h-4 text-secondary" />
+                      </div>
+                      {item}
+                    </div>
+                  ))}
                 </div>
-                <div className="h-px w-12 bg-white/30 my-2" />
-                <span className="text-[10px] font-black uppercase tracking-widest opacity-90">Incondicional</span>
+
+                <motion.div 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <button className="w-full bg-secondary hover:bg-emerald-600 text-white py-6 rounded-2xl font-black text-xl md:text-2xl shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3 active:translate-y-1">
+                    QUERO MEU ACESSO AGORA
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                  <p className="mt-6 text-slate-400 text-sm flex items-center justify-center gap-2 font-medium">
+                    <ShieldCheck className="w-4 h-4 text-secondary" /> Transação Criptografada e Segura
+                  </p>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Garantia Section - Institutional Trust Design */}
+            <div className="mt-24 max-w-2xl mx-auto">
+              <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-100 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] text-center relative overflow-hidden">
+                {/* Background Decorativo */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-0" />
+                
+                <div className="relative z-10 flex flex-col items-center">
+                  <motion.div 
+                    initial={{ rotate: -10, scale: 0.8 }}
+                    whileInView={{ rotate: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="mb-8"
+                  >
+                    <div className="w-40 h-40 relative flex items-center justify-center">
+                      {/* Selo Externo */}
+                      <div className="absolute inset-0 border-2 border-dashed border-amber-400 rounded-full animate-[spin_20s_linear_infinite]" />
+                      {/* Selo Principal */}
+                      <div className="w-32 h-32 rounded-full bg-linear-to-br from-amber-400 via-amber-500 to-amber-600 flex flex-col items-center justify-center shadow-lg border-4 border-white">
+                        <ShieldCheck className="w-6 h-6 text-white mb-1" />
+                        <span className="text-4xl font-black text-white leading-none">7</span>
+                        <span className="text-xs font-black text-white uppercase tracking-widest">Dias</span>
+                        <div className="h-px w-8 bg-white/40 my-1" />
+                        <span className="text-[7px] font-bold text-white uppercase tracking-[0.2em]">Garantia Total</span>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <h3 className="text-2xl md:text-3xl font-display font-black text-slate-900 mb-4">
+                    Garantia de Satisfação <span className="text-primary italic">Incondicional</span>
+                  </h3>
+                  
+                  <div className="relative px-6">
+                    <span className="absolute -left-2 -top-4 text-6xl text-slate-100 font-serif">"</span>
+                    <p className="text-slate-600 text-lg leading-relaxed mb-8 relative z-10">
+                      Temos tanta confiança na qualidade dos nossos slides que oferecemos 
+                      uma garantia de 7 dias. Se por qualquer motivo você não achar que o English Pack 
+                      facilitou suas aulas, basta nos enviar um e-mail. 
+                      <span className="text-slate-900 font-bold block mt-2 text-xl">Devolvemos 100% do seu dinheiro, sem perguntas.</span>
+                    </p>
+                    <span className="absolute -right-2 -bottom-10 text-6xl text-slate-100 font-serif rotate-180">"</span>
+                  </div>
+
+                  <div className="flex flex-col items-center gap-2 mt-4">
+                    <div className="flex gap-1 mb-2">
+                       {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+                    </div>
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                      <Lock className="w-3 h-3" /> Pagamento Seguro via Criptografia SSL
+                    </span>
+                  </div>
+                </div>
               </div>
               
-              {/* Círculo decorativo girando */}
-              <motion.div 
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-4 border-2 border-dashed border-amber-500/30 rounded-full" 
-              />
-            </motion.div>
-
-            <h4 className="text-3xl md:text-4xl font-display font-black mb-4 text-white">Garantia Total de Satisfação</h4>
-            <p className="text-slate-400 text-lg leading-relaxed italic">
-              "O risco é 100% meu. Você acessa os slides, usa em sala de aula e, se em até 7 dias você sentir que o material não valeu o investimento, eu te devolvo <span className="text-secondary font-bold">cada centavo</span> imediatamente."
-            </p>
-            <div className="mt-6 flex items-center justify-center gap-2 text-secondary font-bold uppercase text-xs tracking-widest">
-              <ShieldCheck className="w-4 h-4" /> Compromisso English Pack
+              <div className="mt-8 flex justify-center gap-8 saturate-0 opacity-40">
+                <div className="flex flex-col items-center gap-1">
+                   <div className="h-8 w-12 bg-slate-300 rounded" />
+                   <span className="text-[8px] font-bold">VISA</span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                   <div className="h-8 w-12 bg-slate-300 rounded" />
+                   <span className="text-[8px] font-bold">MASTER</span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                   <div className="h-8 w-12 bg-slate-300 rounded" />
+                   <span className="text-[8px] font-bold">PIX</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
