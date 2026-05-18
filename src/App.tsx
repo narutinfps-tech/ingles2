@@ -18,9 +18,97 @@ import {
   Star,
   ChevronDown,
   ExternalLink,
-  Lock
+  Lock,
+  X
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const RECENT_SALES = [
+  { name: "Ana Paula", city: "São Paulo, SP", time: "há 2 minutos" },
+  { name: "Ricardo Silva", city: "Curitiba, PR", time: "há 5 minutos" },
+  { name: "Juliana Lima", city: "Salvador, BA", time: "há 1 minuto" },
+  { name: "Marcos Santos", city: "Belo Horizonte, MG", time: "há 3 minutos" },
+  { name: "Fernanda Oliveira", city: "Rio de Janeiro, RJ", time: "há 10 segundos" },
+  { name: "Carla Souza", city: "Porto Alegre, RS", time: "há 4 minutos" },
+  { name: "Tiago Mendes", city: "Fortaleza, CE", time: "há 7 minutos" }
+];
+
+function SalesNotification() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
+
+  useEffect(() => {
+    // Initial delay before first notification
+    const initialDelay = setTimeout(() => {
+      setIsVisible(true);
+    }, 5000);
+
+    const cycleInterval = setInterval(() => {
+      setIsVisible(false); // Hide current
+      
+      // Wait for exit animation, then show next
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % RECENT_SALES.length);
+        if (!isDismissed) {
+          setIsVisible(true);
+        }
+      }, 500);
+    }, 10000);
+
+    return () => {
+      clearTimeout(initialDelay);
+      clearInterval(cycleInterval);
+    };
+  }, [isDismissed]);
+
+  // Hide after 3 seconds
+  useEffect(() => {
+    if (isVisible) {
+      const hideTimeout = setTimeout(() => {
+        setIsVisible(false);
+      }, 3000);
+      return () => clearTimeout(hideTimeout);
+    }
+  }, [isVisible]);
+
+  if (isDismissed) return null;
+
+  const sale = RECENT_SALES[currentIndex];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 50, y: -20 }}
+      animate={isVisible ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: 50, y: -20 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className="fixed top-6 right-6 z-50 w-full max-w-[220px] pointer-events-none"
+    >
+      <div className="bg-white rounded-xl shadow-[0_10px_20px_-10px_rgba(0,0,0,0.1)] border border-slate-100 p-2.5 flex items-center gap-2.5 relative pointer-events-auto">
+        <button 
+          onClick={() => {
+            setIsVisible(false);
+            setTimeout(() => setIsDismissed(true), 500);
+          }}
+          className="absolute top-1 right-1 text-slate-300 hover:text-slate-600 transition-colors"
+        >
+          <X className="w-3 h-3" />
+        </button>
+
+        <div className="w-7 h-7 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+        </div>
+
+        <div className="flex flex-col">
+          <p className="text-[10px] font-bold text-slate-900 leading-tight">
+            {sale.name} <span className="font-normal text-slate-500 whitespace-nowrap">({sale.city.split(',')[0]})</span>
+          </p>
+          <p className="text-[9px] text-slate-500 font-medium">Comprou agora</p>
+          <p className="text-[8px] text-emerald-600 font-bold leading-none">{sale.time}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 const TOPICS = [
   "Verb To Be",
@@ -72,6 +160,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <SalesNotification />
       {/* Top Banner Message */}
       <div className="bg-slate-900 text-white py-3 px-4 text-center z-50">
         <p className="text-xs md:text-sm font-bold tracking-widest uppercase flex items-center justify-center gap-2">
@@ -762,30 +851,6 @@ export default function App() {
           </motion.div>
         </div>
       </section>
-
-      {/* Floating Interactive Button */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 2 }}
-        className="fixed bottom-6 right-6 z-50 group"
-      >
-        <div className="absolute -inset-4 bg-emerald-500/20 rounded-full blur-xl group-hover:bg-emerald-500/40 transition-all animate-pulse" />
-        <a 
-          href="https://wa.me/559884335718" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative bg-emerald-500 hover:bg-emerald-600 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-2xl transition-all hover:scale-110 active:scale-95"
-        >
-          <MessageCircle className="w-8 h-8 fill-white/20" />
-          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white animate-bounce">1</span>
-        </a>
-        
-        {/* Tooltip */}
-        <div className="absolute bottom-full right-0 mb-4 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 whitespace-nowrap bg-white text-slate-800 px-4 py-2 rounded-xl shadow-xl border border-slate-100 font-bold text-sm">
-          Precisa de ajuda? 🚀
-        </div>
-      </motion.div>
 
       {/* Footer */}
       <footer className="py-12 bg-slate-50 border-t border-slate-200">
