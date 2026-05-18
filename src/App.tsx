@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { 
   CheckCircle2, 
   Clock, 
@@ -85,11 +85,13 @@ function SalesNotification() {
     >
       <div className="bg-white rounded-xl shadow-[0_10px_20px_-10px_rgba(0,0,0,0.1)] border border-slate-100 p-2.5 flex items-center gap-2.5 relative pointer-events-auto">
         <button 
-          onClick={() => {
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
             setIsVisible(false);
             setTimeout(() => setIsDismissed(true), 500);
           }}
-          className="absolute top-1 right-1 text-slate-300 hover:text-slate-600 transition-colors"
+          className="absolute top-1 right-1 text-slate-300 hover:text-slate-600 transition-colors cursor-pointer"
         >
           <X className="w-3 h-3" />
         </button>
@@ -244,13 +246,17 @@ export default function App() {
               whileTap={{ scale: 0.95 }}
               className="inline-block"
             >
-              <button 
-                onClick={scrollToPricing}
-                className="bg-secondary hover:bg-emerald-700 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all btn-shadow flex items-center gap-3"
+              <a 
+                href="#pricing"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToPricing();
+                }}
+                className="bg-secondary hover:bg-emerald-700 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all btn-shadow flex items-center gap-3 cursor-pointer"
               >
                 Quero garantir meus materiais
                 <ChevronRight className="w-6 h-6" />
-              </button>
+              </a>
             </motion.div>
 
             <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-500">
@@ -516,12 +522,16 @@ export default function App() {
         </div>
         
         <div className="text-center mt-12">
-           <button 
-             onClick={scrollToPricing}
-             className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all animate-pulse shadow-lg"
+           <a 
+             href="#pricing"
+             onClick={(e) => {
+               e.preventDefault();
+               scrollToPricing();
+             }}
+             className="inline-block bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all animate-pulse shadow-lg cursor-pointer no-underline"
            >
              QUERO ESSE MATERIAL COMPLETO
-           </button>
+           </a>
         </div>
       </section>
 
@@ -537,8 +547,12 @@ export default function App() {
             {[7, 8, 9].map((grade) => (
               <div key={grade} className="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
                 <button 
-                  onClick={() => setOpenGrade(openGrade === grade ? null : grade)}
-                  className="w-full flex items-center justify-between p-6 bg-primary text-white font-display font-bold text-xl"
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setOpenGrade(openGrade === grade ? null : grade);
+                  }}
+                  className="w-full flex items-center justify-between p-6 bg-primary text-white font-display font-bold text-xl cursor-pointer"
                 >
                   {grade}º ANO - ENSINO FUNDAMENTAL
                   <ChevronDown className={`w-6 h-6 transition-transform ${openGrade === grade ? 'rotate-180' : ''}`} />
@@ -688,13 +702,13 @@ export default function App() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <button 
-                    onClick={() => window.location.href = "https://pay.cakto.com.br/ec4jzvs_888538"}
-                    className="w-full bg-secondary hover:bg-emerald-700 text-white py-6 rounded-2xl font-black text-xl md:text-2xl shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3 active:translate-y-1"
+                  <a 
+                    href="https://pay.cakto.com.br/ec4jzvs_888538"
+                    className="w-full bg-secondary hover:bg-emerald-700 text-white py-6 rounded-2xl font-black text-xl md:text-2xl shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3 active:translate-y-1 cursor-pointer no-underline"
                   >
                     QUERO MEU ACESSO AGORA
                     <ChevronRight className="w-6 h-6" />
-                  </button>
+                  </a>
                   <p className="mt-6 text-slate-400 text-sm flex items-center justify-center gap-2 font-medium">
                     <ShieldCheck className="w-4 h-4 text-secondary" /> Transação Criptografada e Segura
                   </p>
