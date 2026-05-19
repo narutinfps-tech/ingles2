@@ -648,12 +648,15 @@ export default function App() {
       </section>
 
       {/* Exclusive Bonus Section - Direct & Simple */}
-      <section className="pt-20 pb-0 bg-white border-t border-slate-100">
+      <section className="pt-20 pb-0 bg-[#F8F7F4] border-t border-slate-100">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 leading-tight">
               Receba também +100 <span className="text-primary">Atividades Extras</span>
             </h2>
+            <p className="text-slate-600 text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto">
+              Ganhe de presente um pack completo com mais de 100 atividades pedagógicas de bônus, prontas para imprimir e aplicar com seus alunos.
+            </p>
             
             <div className="relative max-w-2xl mx-auto mb-10">
               <img 
