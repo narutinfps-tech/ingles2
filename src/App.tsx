@@ -19,7 +19,13 @@ import {
   ChevronDown,
   ExternalLink,
   Lock,
-  X
+  X,
+  Volume2,
+  Play,
+  Gamepad2,
+  FileText,
+  Award,
+  ChevronLeft
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -271,6 +277,8 @@ export default function App() {
       <section className="py-12 bg-white text-center">
         <p className="text-slate-400 font-display font-medium tracking-widest text-sm uppercase">Materiais lúdicos, coloridos e 100% didáticos</p>
       </section>
+
+
 
       {/* Benefits Section */}
       <section className="py-24 bg-slate-100 overflow-hidden">
@@ -647,103 +655,355 @@ export default function App() {
         </div>
       </section>
 
-      {/* Exclusive Bonus Section - Direct & Simple */}
-      <section className="pt-20 pb-0 bg-[#F8F7F4] border-t border-slate-100">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 leading-tight">
-              Receba também +100 <span className="text-primary">Atividades Extras</span>
+      {/* Exclusive Bonus Section - Redesigned with 3 Super Bonuses */}
+      <section className="py-24 bg-[#F8F7F4] border-t border-slate-200">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-16 animate-fade-in">
+            <span className="inline-block px-4 py-1.5 bg-amber-500/10 text-amber-600 text-xs font-black uppercase tracking-widest rounded-full mb-4">
+              🎁 PRESENTES EXCLUSIVOS E GRATUITOS
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              Garante Hoje e Leve <span className="text-primary">+3 Super Bônus</span>
             </h2>
-            <p className="text-slate-600 text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto">
-              Ganhe de presente um pack completo com mais de 100 atividades pedagógicas de bônus, prontas para imprimir e aplicar com seus alunos.
+            <p className="text-slate-600 text-lg md:text-xl font-medium mt-3 max-w-2xl mx-auto">
+              Preparamos três presentes incríveis alinhados à BNCC para enriquecer ainda mais a jornada das suas aulas e poupar horas de planejamento.
             </p>
-            
-            <div className="relative max-w-2xl mx-auto mb-10">
-              <img 
-                src="https://i.ibb.co/MyvQWqVv/Chat-GPT-Image-18-de-mai-de-2026-22-20-06.png" 
-                alt="Bônus Atividades" 
-                className="w-full h-auto drop-shadow-2xl"
-                referrerPolicy="no-referrer"
-              />
-              
-              {/* Simple Price Badge */}
-              <div className="absolute -top-4 -right-4 bg-amber-500 text-white px-4 py-4 rounded-full shadow-xl font-black text-center rotate-12 flex flex-col items-center justify-center border-4 border-white">
-                <span className="text-[10px] leading-none opacity-80 decoration-slate-900/50">DE R$ 47</span>
-                <span className="text-xl leading-tight">GRÁTIS</span>
-              </div>
-            </div>
           </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-12">
+            
+            {/* BONUS 1: Atividades Extras Prontas */}
+            <motion.div 
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-3xl p-6 md:p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-slate-100 flex flex-col justify-between relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-2 bg-primary" />
+              
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <span className="bg-primary/10 text-primary text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full">
+                    BÔNUS 01
+                  </span>
+                  <div className="bg-emerald-50 text-emerald-700 text-xs px-2.5 py-1 rounded-lg font-bold border border-emerald-100 uppercase tracking-wider">
+                    DE R$ 47 por R$ 0
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-black text-slate-900 mb-3 uppercase tracking-tight">
+                  +100 Atividades Extras
+                </h3>
+                <p className="text-slate-500 text-sm mb-6 leading-relaxed">
+                  Um pack fantástico com mais de 100 folhas de atividades pedagógicas extras prontas para imprimir e aplicar diretamente na sua turma.
+                </p>
+
+                {/* Main Image representing Bonus 1 */}
+                <div className="relative rounded-2xl overflow-hidden mb-6 bg-slate-50 border border-slate-100 aspect-video flex items-center justify-center p-2.5">
+                  <img 
+                    src="https://i.ibb.co/MyvQWqVv/Chat-GPT-Image-18-de-mai-de-2026-22-20-06.png" 
+                    alt="Bônus 100 Atividades" 
+                    className="max-h-full object-contain drop-shadow-md rounded-lg"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+
+                <ul className="space-y-2.5 mb-8 text-left">
+                  {[
+                    "Exercícios gramaticais diretos",
+                    "Listas de fixação alinhadas com a BNCC",
+                    "Formato A4 PDF limpo pronto para imprimir"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-xs font-bold text-slate-700">
+                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border-t border-slate-100 pt-5 text-center">
+                <span className="text-xs font-bold text-slate-400 tracking-wider">INCLUSO NA COMPRA DO SLIDESHOW</span>
+              </div>
+            </motion.div>
+
+            {/* BONUS 2: English Audio Class Pack */}
+            <motion.div 
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-3xl p-6 md:p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-slate-100 flex flex-col justify-between relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-2 bg-secondary" />
+              
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <span className="bg-secondary/10 text-secondary text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full">
+                    BÔNUS 02
+                  </span>
+                  <div className="bg-emerald-50 text-emerald-700 text-xs px-2.5 py-1 rounded-lg font-bold border border-emerald-100 uppercase tracking-wider">
+                    DE R$ 37 por R$ 0
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-black text-slate-900 mb-3 uppercase tracking-tight">
+                  English Audio Class Pack
+                </h3>
+                <p className="text-slate-500 text-sm mb-6 leading-relaxed">
+                  Atividades criativas acompanhadas de áudio com pronúncia nítida para ajudar seus alunos a dominar o speaking e treinar listening.
+                </p>
+
+                {/* Mockup Image representing Bonus 2 (Livre e maior, sem moldura) */}
+                <div className="mb-6 flex justify-center">
+                  <img 
+                    src="https://i.ibb.co/FqXqQwFF/Chat-GPT-Image-19-de-mai-de-2026-17-31-38.png" 
+                    alt="Bônus English Audio Class Pack" 
+                    className="w-full h-auto drop-shadow-xl select-none"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+
+                <ul className="space-y-2.5 mb-8 text-left">
+                  {[
+                    "Áudios práticos divididos por temas",
+                    "Perfeito para ensinar phonetics e rítmica",
+                    "Slides com botões integrados para dar play na aula"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-xs font-bold text-slate-700">
+                      <CheckCircle2 className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border-t border-slate-100 pt-5 text-center">
+                <span className="text-xs font-bold text-slate-400 tracking-wider">AULA MAIS IMERSIVA E DINÂMICA</span>
+              </div>
+            </motion.div>
+
+            {/* BONUS 3: Atividades Diversificadas Lúdicas */}
+            <motion.div 
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-3xl p-6 md:p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-slate-100 flex flex-col justify-between relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-2 bg-amber-500" />
+              
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <span className="bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full">
+                    BÔNUS 03
+                  </span>
+                  <div className="bg-emerald-50 text-emerald-700 text-xs px-2.5 py-1 rounded-lg font-bold border border-emerald-100 uppercase tracking-wider">
+                    DE R$ 49 por R$ 0
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-black text-slate-900 mb-3 uppercase tracking-tight">
+                  Atividades Lúdicas Especiais
+                </h3>
+                <p className="text-slate-500 text-sm mb-6 leading-relaxed">
+                  Uma coleção lúdica fantástica contendo Bingos didáticos, Caça-Palavras dinâmicos e Atividades de Ligação de Palavras.
+                </p>
+
+                {/* Mockup Image representing Bonus 3 (Livre e maior, sem moldura) */}
+                <div className="mb-6 flex justify-center">
+                  <img 
+                    src="https://i.ibb.co/nqPc6XPj/Chat-GPT-Image-19-de-mai-de-2026-17-42-07.png" 
+                    alt="Bônus Atividades Lúdicas Especiais" 
+                    className="w-full h-auto drop-shadow-xl select-none"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+
+                <ul className="space-y-2.5 mb-8 text-left">
+                  {[
+                    "Bingos de vocabulário e tempos verbais",
+                    "Caça-palavras temáticos desafiadores",
+                    "Quebra-cabeças e ligação de balões visuais"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-xs font-bold text-slate-700">
+                      <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border-t border-slate-100 pt-5 text-center">
+                <span className="text-xs font-bold text-slate-400 tracking-wider">ENSINE JOGANDO E FIXE O APRENDIZADO</span>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Quick interactive CTA block inside */}
+          <div className="bg-slate-900 rounded-[2.5rem] p-8 md:p-10 text-white text-center relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl -mr-24 -mt-24" />
+            
+            <h4 className="text-2xl md:text-3xl font-black mb-3">Tudo isso somado vale R$ 230 reais...</h4>
+            <p className="text-slate-300 text-sm md:text-base font-semibold max-w-xl mx-auto mb-8 leading-relaxed">
+              Mas comprando o material completo hoje, esses três presentes vão sair de forma <span className="text-amber-400 underline font-black">totalmente GRATUITA</span> para você.
+            </p>
+
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
+              <a 
+                href="#pricing"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToPricing();
+                }}
+                className="bg-secondary hover:bg-emerald-700 text-white px-8 py-4.5 rounded-2xl font-black text-lg md:text-xl transition-all flex items-center gap-2 cursor-pointer no-underline"
+              >
+                Garantir slides + todos os bônus
+                <ChevronRight className="w-5 h-5" />
+              </a>
+            </motion.div>
+          </div>
+
         </div>
       </section>
 
       {/* Pricing Section - Redesigned with Light Colors and High Conversion Layout */}
       <section id="pricing" className="pt-10 pb-24 bg-linear-to-b from-white via-primary/5 to-white relative">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-xl mx-auto">
-            {/* Oferta Card */}
-            <motion.div 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-[40px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden relative"
-            >
-              {/* Badge Flutuante */}
-              <div className="bg-accent text-white px-6 py-2 font-black text-sm absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl shadow-md z-20 whitespace-nowrap">
-                OFERTA LIMITADA: 70% OFF
-              </div>
-
-              <div className="p-8 md:p-12 pt-16 text-center">
-                <h2 className="text-3xl font-display font-black text-slate-900 mb-2 leading-tight">
-                  Tudo o que você precisa por um preço simbólico
-                </h2>
-                <div className="w-16 h-1.5 bg-primary/20 mx-auto rounded-full mb-8" />
-
-                {/* Preço Layout Corrigido */}
-                <div className="flex flex-col items-center justify-center mb-8">
-                  <span className="text-slate-400 line-through text-lg font-medium mb-1">De R$ 97,00</span>
-                  <div className="flex items-start justify-center gap-1">
-                    <span className="text-primary font-bold text-2xl mt-2">R$</span>
-                    <span className="text-primary font-black text-7xl md:text-8xl tracking-tighter leading-none">27,90</span>
-                  </div>
-                  <p className="inline-block mt-4 text-secondary font-bold bg-secondary/10 px-4 py-1.5 rounded-full text-sm">
-                    Acesso Vitalício • Pagamento Único
-                  </p>
+          <div className="max-w-5xl mx-auto">
+            {/* Two-Column Pricing Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+              
+              {/* Essential Card (R$ 10) */}
+              <motion.div 
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-[40px] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-slate-100 overflow-hidden relative flex flex-col justify-between"
+              >
+                {/* Badge Flutuante */}
+                <div className="bg-slate-100 text-slate-700 px-6 py-2 font-black text-xs absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl shadow-xs z-20 whitespace-nowrap uppercase tracking-wider">
+                  Oferta Super Econômica
                 </div>
 
-                {/* Lista de Benefícios */}
-                <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
-                  {[
-                    "+70 Aulas em Slides de Inglês",
-                    "Material 100% Editável no Canva",
-                    "BÔNUS: +100 Atividades de Fixação",
-                    "Acesso Imediato no E-mail"
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 font-semibold text-slate-700 text-sm md:text-base">
-                      <div className="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-secondary" />
+                <div className="p-8 md:p-10 pt-16 text-center flex-grow flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-2xl font-display font-black text-slate-900 mb-2 leading-tight uppercase tracking-tight">
+                      Plano Essencial
+                    </h3>
+                    <div className="w-12 h-1 bg-slate-200 mx-auto rounded-full mb-8" />
+
+                    {/* Preço */}
+                    <div className="flex flex-col items-center justify-center mb-8">
+                      <span className="text-slate-400 line-through text-base font-medium mb-1">De R$ 47,00</span>
+                      <div className="flex items-start justify-center gap-1">
+                        <span className="text-slate-800 font-bold text-xl mt-2">R$</span>
+                        <span className="text-slate-800 font-black text-6xl md:text-7xl tracking-tighter leading-none">10,00</span>
                       </div>
-                      {item}
+                      <p className="inline-block mt-4 text-slate-500 font-bold bg-slate-100 px-4 py-1.5 rounded-full text-xs">
+                        Acesso Vitalício • Pagamento Único
+                      </p>
                     </div>
-                  ))}
+
+                    {/* Lista de Benefícios */}
+                    <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
+                      {[
+                        "Aulas de Inglês Prontas",
+                        "Material 100% Editável no Canva",
+                        "Acesso Vitalício Garantido",
+                        "Suporte Pedagógico por Chat"
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center gap-3 font-semibold text-slate-700 text-sm">
+                          <div className="w-5.5 h-5.5 bg-slate-100 rounded-full flex items-center justify-center shrink-0">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-slate-500" />
+                          </div>
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <a 
+                      href="https://pay.cakto.com.br/mofctvj"
+                      className="w-full bg-slate-800 hover:bg-slate-900 text-white py-4.5 rounded-2xl font-black text-lg shadow-md transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
+                    >
+                      GARANTIR PLANO ESSENCIAL
+                      <ChevronRight className="w-5 h-5" />
+                    </a>
+                    <p className="mt-4 text-slate-400 text-xs flex items-center justify-center gap-1.5 font-medium">
+                      <ShieldCheck className="w-3.5 h-3.5 text-slate-500" /> Transação Segura e Criptografada
+                    </p>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Premium Card (R$ 27,90) */}
+              <motion.div 
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-[40px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)] border-2 border-secondary overflow-hidden relative flex flex-col justify-between"
+              >
+                {/* Badge Flutuante */}
+                <div className="bg-secondary text-white px-6 py-2 font-black text-xs absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl shadow-md z-20 whitespace-nowrap uppercase tracking-widest">
+                  🔥 O MAIS RECOMENDADO (70% OFF)
                 </div>
 
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <a 
-                    href="https://pay.cakto.com.br/ec4jzvs_888538"
-                    className="w-full bg-secondary hover:bg-emerald-700 text-white py-6 rounded-2xl font-black text-xl md:text-2xl shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3 active:translate-y-1 cursor-pointer no-underline"
+                <div className="p-8 md:p-10 pt-16 text-center flex-grow flex flex-col justify-between bg-emerald-50/5">
+                  <div>
+                    <h3 className="text-2xl font-display font-black text-[#047857] mb-2 leading-tight uppercase tracking-tight">
+                      Plano Completo
+                    </h3>
+                    <div className="w-12 h-1 bg-secondary/30 mx-auto rounded-full mb-8" />
+
+                    {/* Preço Layout Corrigido */}
+                    <div className="flex flex-col items-center justify-center mb-8">
+                      <span className="text-slate-400 line-through text-base font-medium mb-1">De R$ 97,00</span>
+                      <div className="flex items-start justify-center gap-1">
+                        <span className="text-secondary font-bold text-xl mt-2">R$</span>
+                        <span className="text-secondary font-black text-6xl md:text-7xl tracking-tighter leading-none">27,90</span>
+                      </div>
+                      <p className="inline-block mt-4 text-secondary font-bold bg-secondary/10 px-4 py-1.5 rounded-full text-xs">
+                        Acesso Vitalício + Todos os Bônus Inclusos
+                      </p>
+                    </div>
+
+                    {/* Lista de Benefícios */}
+                    <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
+                      {[
+                        "+70 Aulas em Slides de Inglês",
+                        "Material 100% Editável no Canva",
+                        "BÔNUS: +100 Atividades de Fixação",
+                        "BÔNUS: English Audio Class Pack",
+                        "BÔNUS: Atividades Lúdicas Especiais",
+                        "Acesso Imediato no E-mail"
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center gap-3 font-semibold text-slate-800 text-sm">
+                          <div className="w-5.5 h-5.5 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-secondary" />
+                          </div>
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    QUERO MEU ACESSO AGORA
-                    <ChevronRight className="w-6 h-6" />
-                  </a>
-                  <p className="mt-6 text-slate-400 text-sm flex items-center justify-center gap-2 font-medium">
-                    <ShieldCheck className="w-4 h-4 text-secondary" /> Transação Criptografada e Segura
-                  </p>
-                </motion.div>
-              </div>
-            </motion.div>
+                    <a 
+                      href="https://pay.cakto.com.br/ec4jzvs_888538"
+                      className="w-full bg-secondary hover:bg-emerald-700 text-white py-4.5 rounded-2xl font-black text-lg shadow-[0_15px_30px_-5px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
+                    >
+                      GARANTIR ACESSO COMPLETO
+                      <ChevronRight className="w-5 h-5" />
+                    </a>
+                    <p className="mt-4 text-slate-400 text-xs flex items-center justify-center gap-1.5 font-semibold font-medium">
+                      <ShieldCheck className="w-3.5 h-3.5 text-secondary" /> Transação Criptografada e Segura
+                    </p>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+            </div>
 
             {/* Garantia Section - Institutional Trust Design */}
             <div className="mt-24 max-w-2xl mx-auto">
