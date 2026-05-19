@@ -647,8 +647,34 @@ export default function App() {
         </div>
       </section>
 
+      {/* Exclusive Bonus Section - Direct & Simple */}
+      <section className="pt-20 pb-0 bg-white border-t border-slate-100">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 leading-tight">
+              Receba também +100 <span className="text-primary">Atividades Extras</span>
+            </h2>
+            
+            <div className="relative max-w-2xl mx-auto mb-10">
+              <img 
+                src="https://i.ibb.co/MyvQWqVv/Chat-GPT-Image-18-de-mai-de-2026-22-20-06.png" 
+                alt="Bônus Atividades" 
+                className="w-full h-auto drop-shadow-2xl"
+                referrerPolicy="no-referrer"
+              />
+              
+              {/* Simple Price Badge */}
+              <div className="absolute -top-4 -right-4 bg-amber-500 text-white px-4 py-4 rounded-full shadow-xl font-black text-center rotate-12 flex flex-col items-center justify-center border-4 border-white">
+                <span className="text-[10px] leading-none opacity-80 decoration-slate-900/50">DE R$ 47</span>
+                <span className="text-xl leading-tight">GRÁTIS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section - Redesigned with Light Colors and High Conversion Layout */}
-      <section id="pricing" className="py-24 bg-linear-to-b from-white via-primary/5 to-white relative">
+      <section id="pricing" className="pt-10 pb-24 bg-linear-to-b from-white via-primary/5 to-white relative">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-xl mx-auto">
             {/* Oferta Card */}
@@ -686,7 +712,7 @@ export default function App() {
                   {[
                     "+70 Aulas em Slides de Inglês",
                     "Material 100% Editável no Canva",
-                    "Biblioteca de Atividades Inclusa",
+                    "BÔNUS: +100 Atividades de Fixação",
                     "Acesso Imediato no E-mail"
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3 font-semibold text-slate-700 text-sm md:text-base">
