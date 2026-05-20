@@ -278,8 +278,6 @@ export default function App() {
         <p className="text-slate-400 font-display font-medium tracking-widest text-sm uppercase">Materiais lúdicos, coloridos e 100% didáticos</p>
       </section>
 
-
-
       {/* Benefits Section */}
       <section className="py-24 bg-slate-100 overflow-hidden">
         <div className="container mx-auto px-4">
@@ -580,6 +578,67 @@ export default function App() {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Seção Amostra Grátis (Estratégica: Entre Currículo e Depoimentos) */}
+      <section className="py-20 bg-linear-to-b from-slate-50 to-white border-y border-slate-100">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <div className="space-y-6">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-100 text-emerald-800 text-xs font-black uppercase tracking-wider rounded-md mx-auto">
+              <Sparkles className="w-3.5 h-3.5" /> AMOSTRA COMPLETA GRATUITA
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+              Experimente uma <span className="text-primary">Aula Completa</span> por dentro!
+            </h2>
+            <p className="text-slate-600 text-base md:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
+              Quer ver a altíssima qualidade de perto? Criamos um espaço exclusivo para você visualizar as lâminas, a didática e a estrutura dos nossos materiais. Clique no link para abrir a nossa aula de demonstração de forma 100% gratuita.
+            </p>
+
+            <div className="space-y-3 pt-2 max-w-md mx-auto text-left">
+              {[
+                "Navegue pelo material completo em PDF",
+                "Mesma didática visual e interativa dos slides pagos",
+                "Veja como mantemos o interesse dos alunos",
+                "Totalmente editável no Canva após adquirir"
+              ].map((benefit, i) => (
+                <div key={i} className="flex items-center gap-3 font-semibold text-slate-700 text-sm md:text-base">
+                  <CheckCircle2 className="w-5 h-5 text-secondary shrink-0" />
+                  <span>{benefit}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.div 
+                whileHover={{ scale: 1.03 }} 
+                whileTap={{ scale: 0.97 }}
+                className="w-full sm:w-auto"
+              >
+                <a
+                  href="https://gray-donnie-76.tiiny.site"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:inline-flex bg-secondary hover:bg-emerald-700 text-white font-black py-4.5 px-8 rounded-2xl shadow-lg flex items-center justify-center gap-2 text-base md:text-lg cursor-pointer no-underline text-center"
+                >
+                  <FileText className="w-5 h-5" />
+                  VISUALIZAR AMOSTRA
+                  <ExternalLink className="w-4 h-4 shrink-0" />
+                </a>
+              </motion.div>
+              
+              <a
+                href="#pricing"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToPricing();
+                }}
+                className="bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 text-center font-bold py-4.5 px-6 rounded-2xl flex items-center justify-center gap-1.5 text-sm md:text-base border border-slate-200 transition-colors cursor-pointer"
+              >
+                Ver Planos de Acesso
+              </a>
+            </div>
           </div>
         </div>
       </section>
