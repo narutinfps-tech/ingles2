@@ -445,7 +445,65 @@ export default function App() {
         </div>
       </section>
 
+      {/* Seção de Vídeo de Demonstração - Tour por dentro */}
+      <section className="py-24 bg-linear-to-b from-slate-50 to-slate-100 border-y border-slate-150 relative overflow-hidden">
+        {/* Ambient background blur */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[100px] -z-10" />
 
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-12 max-w-3xl mx-auto space-y-4">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-100 text-emerald-800 text-xs font-black uppercase tracking-wider rounded-md">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+              TOUR COMPLETO EM VÍDEO
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              Assista por dentro dos <span className="text-primary italic">nossos slides</span>
+            </h2>
+            <p className="text-slate-600 text-base md:text-lg font-medium leading-relaxed">
+              Dê play no vídeo abaixo e veja como nossa metodologia funciona na prática! Mostro exatamente toda a didática, as interações e a estrutura de alta performance presente em todos os nossos materiais.
+            </p>
+          </div>
+
+          {/* Interactive Player Wrap */}
+          <div className="max-w-4xl mx-auto relative">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative bg-slate-950 rounded-2xl md:rounded-3xl p-3 md:p-5 shadow-2xl border border-slate-800 overflow-hidden"
+            >
+              {/* Top Hub Simulado (Like a Premium browser frame) */}
+              <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-3 md:mb-5 px-1 md:px-3">
+                <div className="flex gap-2">
+                  <span className="w-3.5 h-3.5 bg-rose-500 rounded-full inline-block" />
+                  <span className="w-3.5 h-3.5 bg-amber-500 rounded-full inline-block" />
+                  <span className="w-3.5 h-3.5 bg-emerald-500 rounded-full inline-block" />
+                </div>
+                <div className="bg-slate-900/60 text-slate-400 text-[11px] px-4 py-1.5 rounded-full font-mono select-none flex items-center gap-2 max-w-[240px] md:max-w-xs truncate">
+                  <Play className="w-3.5 h-3.5 text-secondary shrink-0" />
+                  <span>demonstracao_slides.mp4</span>
+                </div>
+                <span className="text-[10px] text-emerald-400 font-bold tracking-widest hidden sm:inline-block bg-emerald-950/40 border border-emerald-900/50 px-2 py-0.5 rounded-sm">
+                  QUALIDADE HD
+                </span>
+              </div>
+
+              {/* Real Responsive ScreenPal Video Player */}
+              <div className="relative w-full overflow-hidden rounded-xl bg-slate-900 shadow-inner" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  src="https://go.screenpal.com/player/cOhYFVntpOB"
+                  className="absolute top-0 left-0 w-full h-full border-0 select-none"
+                  allowFullScreen
+                  scrolling="no"
+                  allow="autoplay; encrypted-media"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* New Section: What's Inside - Dynamic Carousel */}
       <section className="py-20 bg-white overflow-hidden">
