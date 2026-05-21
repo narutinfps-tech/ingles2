@@ -1151,29 +1151,6 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp Button */}
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 260, damping: 20 }}
-        className="fixed bottom-6 right-6 z-50 select-none pb-safe"
-      >
-        <a
-          href="https://wa.me/559884335718"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-16 h-16 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(16,185,129,0.4)] transition-all duration-300 hover:scale-110 active:scale-95 group relative animate-pulse-subtle"
-          aria-label="Fale conosco no WhatsApp"
-        >
-          {/* Subtle radar pulse effect */}
-          <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping pointer-events-none -z-10" />
-          
-          <span className="absolute right-20 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-md">
-            Dúvidas? Fale Conosco
-          </span>
-          <MessageCircle className="w-8 h-8 fill-white/10" />
-        </a>
-      </motion.div>
     </div>
   );
 }
