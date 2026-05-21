@@ -1021,53 +1021,52 @@ export default function App() {
             </div>
 
             {/* Garantia Section - Institutional Trust Design */}
-            <div className="mt-24 max-w-2xl mx-auto">
-              <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-100 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] text-center relative overflow-hidden">
-                {/* Background Decorativo */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-0" />
+            <div className="mt-24 max-w-3xl mx-auto">
+              <div className="bg-white rounded-3xl p-8 md:p-16 border border-slate-100 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.06)] text-center relative overflow-hidden">
                 
                 <div className="relative z-10 flex flex-col items-center">
+                  {/* Classic 7-Day Guarantee Minimalist Icon */}
                   <motion.div 
-                    initial={{ rotate: -10, scale: 0.8 }}
-                    whileInView={{ rotate: 0, scale: 1 }}
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.4 }}
                     className="mb-8"
                   >
-                    <div className="w-40 h-40 relative flex items-center justify-center">
-                      {/* Selo Externo */}
-                      <div className="absolute inset-0 border-2 border-dashed border-amber-400 rounded-full animate-[spin_20s_linear_infinite]" />
-                      {/* Selo Principal */}
-                      <div className="w-32 h-32 rounded-full bg-linear-to-br from-amber-400 via-amber-500 to-amber-600 flex flex-col items-center justify-center shadow-lg border-4 border-white">
-                        <ShieldCheck className="w-6 h-6 text-white mb-1" />
-                        <span className="text-4xl font-black text-white leading-none">7</span>
-                        <span className="text-xs font-black text-white uppercase tracking-widest">Dias</span>
-                        <div className="h-px w-8 bg-white/40 my-1" />
-                        <span className="text-[7px] font-bold text-white uppercase tracking-[0.2em]">Garantia Total</span>
+                    <div className="w-24 h-24 rounded-full bg-amber-50/60 border border-amber-200 flex items-center justify-center relative">
+                      {/* Outer subtle glowing ring */}
+                      <div className="absolute inset-[-6px] rounded-full border border-dashed border-amber-200/50 animate-[spin_60s_linear_infinite]" />
+                      
+                      <div className="flex flex-col items-center">
+                        <ShieldCheck className="w-10 h-10 text-amber-600 stroke-[1.5]" />
+                        <span className="text-xs font-black text-amber-800 tracking-wider uppercase mt-0.5 leading-none">7 dias</span>
                       </div>
                     </div>
                   </motion.div>
 
-                  <h3 className="text-2xl md:text-3xl font-display font-black text-slate-900 mb-4">
-                    Garantia de Satisfação <span className="text-primary italic">Incondicional</span>
+                  {/* Clean Copy typography */}
+                  <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Garantia de Satisfação <span className="text-primary italic font-serif">Incondicional</span>
                   </h3>
                   
-                  <div className="relative px-6">
-                    <span className="absolute -left-2 -top-4 text-6xl text-slate-100 font-serif">"</span>
-                    <p className="text-slate-600 text-lg leading-relaxed mb-8 relative z-10">
-                      Temos tanta confiança na qualidade dos nossos slides que oferecemos 
-                      uma garantia de 7 dias. Se por qualquer motivo você não achar que a Academia de Inglês 
-                      facilitou suas aulas, basta nos enviar um e-mail. 
-                      <span className="text-slate-900 font-bold block mt-2 text-xl">Devolvemos 100% do seu dinheiro, sem perguntas.</span>
+                  <div className="max-w-2xl mx-auto px-4 md:px-8">
+                    <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-normal mb-8">
+                      Temos tanta confiança na qualidade pedagógica e no impacto dos nossos slides que oferecemos uma garantia integral de 7 dias. Experimente cada detalhe em suas turmas sem risco algum.
                     </p>
-                    <span className="absolute -right-2 -bottom-10 text-6xl text-slate-100 font-serif rotate-180">"</span>
+                    <div className="bg-slate-50/80 backdrop-blur-xs rounded-2xl p-5 border border-slate-100 mb-8 inline-block max-w-lg">
+                      <p className="text-slate-800 text-base md:text-lg font-bold leading-relaxed">
+                        Se em até 7 dias você não amar o material por qualquer motivo, devolvemos <span className="text-[#E65C00] font-black">100% do seu dinheiro</span>. Simples assim.
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="flex flex-col items-center gap-2 mt-4">
-                    <div className="flex gap-1 mb-2">
-                       {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+                  {/* Security trust flags */}
+                  <div className="flex flex-col items-center gap-2 border-t border-slate-100 pt-8 w-full max-w-xl">
+                    <div className="flex gap-1.5 mb-2">
+                      {[1,2,3,4,5].map(s => <Star key={s} className="w-5 h-5 fill-amber-400 text-amber-400" />)}
                     </div>
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                      <Lock className="w-3 h-3" /> Pagamento Seguro via Criptografia SSL
+                      <Lock className="w-3.5 h-3.5 text-slate-400" /> Pagamento 100% Seguro & Acesso Imediato
                     </span>
                   </div>
                 </div>
