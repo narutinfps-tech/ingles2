@@ -206,11 +206,11 @@ export default function App() {
                 {/* Responsive Video Container - Exact 9:20 aspect ratio (720x1600) */}
                 <div className="relative w-full overflow-hidden rounded-2xl bg-slate-900 shadow-inner" style={{ paddingBottom: '222.22%' }}>
                   <iframe
-                    src="https://fast.wistia.net/embed/iframe/obez58v202?videoFoam=true&preload=auto"
+                    src="https://fast.wistia.net/embed/iframe/obez58v202?videoFoam=false&playsinline=true&preload=auto&quality=auto&endVideoBehavior=reset"
                     className="absolute top-0 left-0 w-full h-full border-0 select-none animate-fade-in"
                     allowFullScreen
                     scrolling="no"
-                    allow="autoplay; encrypted-media"
+                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write"
                     referrerPolicy="no-referrer"
                     loading="eager"
                   />
