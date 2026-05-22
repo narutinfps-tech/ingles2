@@ -1328,6 +1328,23 @@ export default function App() {
         </div>
       </footer>
 
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/559884335718"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.3)] hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group"
+        aria-label="Fale conosco no WhatsApp"
+      >
+        <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-white rounded-full animate-bounce flex items-center justify-center text-[8px] font-bold text-white select-none">
+          1
+        </span>
+        <MessageCircle className="w-6 h-6 fill-white text-[#25D366]" />
+        <span className="max-w-0 overflow-hidden group-hover:max-w-md transition-all duration-300 ease-out font-black text-sm whitespace-nowrap hidden lg:inline-block">
+          <span className="pl-2 pr-1">Dúvidas? Fale conosco!</span>
+        </span>
+      </a>
+
     </div>
   );
 }
