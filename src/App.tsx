@@ -186,24 +186,20 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-4">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-10">
               Tenha acesso aos <span className="text-primary">slides prontos</span> de Inglês que vão despertar a atenção dos seus alunos.
             </h1>
-            
-            <p className="text-slate-600 text-lg md:text-xl max-w-3xl mx-auto mb-8">
-              Slides 100% editáveis no Canva, com dinâmicas integradas e design moderno para economizar horas de planejamento e conquistar a atenção da sua turma.
-            </p>
 
             {/* Custom Infinite Carousel in place of the video */}
-            <div className="w-full relative overflow-hidden py-10 mb-10 border-y border-slate-100 bg-white">
-              <div className="relative flex flex-col gap-4 select-none pointer-events-none mb-6">
+            <div className="w-full relative overflow-hidden py-6 mb-12">
+              <div className="relative flex flex-col gap-4 select-none pointer-events-none">
                 {/* Gradients to shadow the left and right borders of the infinite strip */}
                 <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
                 <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
                 
                 {/* Row 1 - Slide Previews */}
                 <motion.div 
-                  className="flex whitespace-nowrap gap-3 items-center w-max"
+                  className="flex whitespace-nowrap gap-5 items-center w-max"
                   animate={{ x: ["0%", "-50%"] }}
                   transition={{ 
                     duration: 22, 
@@ -214,12 +210,12 @@ export default function App() {
                   {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
                     <div 
                       key={`row1-hero-carousel-${index}`} 
-                      className="w-[220px] sm:w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+                      className="w-[220px] sm:w-[260px] shrink-0"
                     >
                       <img 
                         src={img} 
                         alt="Slide Preview" 
-                        className="rounded-lg w-full h-auto block object-contain"
+                        className="rounded-2xl w-full h-auto block object-contain shadow-md border border-slate-100/50"
                         referrerPolicy="no-referrer"
                       />
                     </div>
@@ -228,7 +224,7 @@ export default function App() {
 
                 {/* Row 2 - Slide Previews opposite direction */}
                 <motion.div 
-                  className="flex whitespace-nowrap gap-3 items-center w-max"
+                  className="flex whitespace-nowrap gap-5 items-center w-max"
                   initial={{ x: "-50%" }}
                   animate={{ x: ["-50%", "0%"] }}
                   transition={{ 
@@ -240,22 +236,18 @@ export default function App() {
                   {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
                     <div 
                       key={`row2-hero-carousel-${index}`} 
-                      className="w-[220px] sm:w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+                      className="w-[220px] sm:w-[260px] shrink-0"
                     >
                       <img 
                         src={img} 
                         alt="Slide Preview" 
-                        className="rounded-lg w-full h-auto block object-contain"
+                        className="rounded-2xl w-full h-auto block object-contain shadow-md border border-slate-100/50"
                         referrerPolicy="no-referrer"
                       />
                     </div>
                   ))}
                 </motion.div>
               </div>
-
-              <p className="text-slate-400 font-display font-medium tracking-widest text-xs uppercase text-center select-none mt-6">
-                Materiais lúdicos, coloridos e 100% didáticos
-              </p>
             </div>
 
             <motion.div 
