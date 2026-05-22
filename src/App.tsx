@@ -322,7 +322,13 @@ export default function App() {
             </div>
 
             <motion.div 
-              whileHover={{ scale: 1.05 }}
+              animate={{ scale: [1, 1.03, 1] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block"
             >
@@ -589,16 +595,28 @@ export default function App() {
         </div>
         
         <div className="text-center mt-12">
-           <a 
-             href="#pricing"
-             onClick={(e) => {
-               e.preventDefault();
-               scrollToPricing();
-             }}
-             className="inline-block bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all animate-pulse shadow-lg cursor-pointer no-underline"
-           >
-             QUERO ESSE MATERIAL COMPLETO
-           </a>
+          <motion.div
+            animate={{ scale: [1, 1.04, 1] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.96 }}
+            className="inline-block animate-pulse"
+          >
+            <a 
+              href="#pricing"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToPricing();
+              }}
+              className="inline-block bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg cursor-pointer no-underline"
+            >
+              QUERO ESSE MATERIAL COMPLETO
+            </a>
+          </motion.div>
         </div>
       </section>
 
@@ -1071,7 +1089,13 @@ export default function App() {
                   </div>
 
                   <motion.div 
-                    whileHover={{ scale: 1.02 }}
+                    animate={{ scale: [1, 1.03, 1] }}
+                    transition={{
+                      duration: 2.2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    whileHover={{ scale: 1.06 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
@@ -1140,7 +1164,13 @@ export default function App() {
                   </div>
 
                   <motion.div 
-                    whileHover={{ scale: 1.02 }}
+                    animate={{ scale: [1, 1.04, 1] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
@@ -1293,15 +1323,23 @@ export default function App() {
               <div className="text-center md:text-left flex-1">
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">Ainda tem dúvidas?</h3>
                 <p className="text-slate-300 text-lg mb-6">Estou online agora para te ajudar a tomar a melhor decisão!</p>
-                <a 
+                <motion.a 
                   href="https://wa.me/559884335718" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-lg transition-all shadow-lg hover:shadow-emerald-500/20 group-hover:-translate-y-1"
+                  animate={{ scale: [1, 1.04, 1] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-lg transition-all shadow-lg hover:shadow-emerald-500/20 cursor-pointer no-underline"
                 >
                   <MessageCircle className="w-6 h-6" />
                   CHAMAR NO WHATSAPP
-                </a>
+                </motion.a>
               </div>
             </div>
           </motion.div>
@@ -1328,12 +1366,23 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp Button */}
-      <a
+      {/* Floating WhatsApp Button with Loop Animation */}
+      <motion.a
         href="https://wa.me/559884335718"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.3)] hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group"
+        animate={{ 
+          scale: [1, 1.08, 1],
+          y: [0, -4, 0]
+        }}
+        transition={{
+          duration: 2.5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        whileHover={{ scale: 1.15 }}
+        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.3)] transition-all duration-300 flex items-center justify-center group cursor-pointer"
         aria-label="Fale conosco no WhatsApp"
       >
         <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-white rounded-full animate-bounce flex items-center justify-center text-[8px] font-bold text-white select-none">
@@ -1343,7 +1392,7 @@ export default function App() {
         <span className="max-w-0 overflow-hidden group-hover:max-w-md transition-all duration-300 ease-out font-black text-sm whitespace-nowrap hidden lg:inline-block">
           <span className="pl-2 pr-1">Dúvidas? Fale conosco!</span>
         </span>
-      </a>
+      </motion.a>
 
     </div>
   );
