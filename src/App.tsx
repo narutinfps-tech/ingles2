@@ -160,6 +160,77 @@ const INSIDE_IMAGES = [
   "https://i.ibb.co/N647P5Xh/Chat-GPT-Image-16-de-mai-de-2026-19-26-36-Copia.png"
 ];
 
+interface WistiaPlayerProps {
+  hashedId: string;
+}
+
+function WistiaPlayer({ hashedId }: WistiaPlayerProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Integrate with Wistia's asynchronous queue
+    const _wq = (window as any)._wq || [];
+    _wq.push({
+      id: hashedId,
+      options: {
+        videoFoam: true, // Auto-responsiveness for player
+        playsinline: true,
+        preload: "auto",
+        qualityControl: true,
+        qualityMin: "360p",
+        qualityMax: "720p",
+        resumable: false,
+        endVideoBehavior: "reset"
+      },
+      onReady: (video: any) => {
+        console.log(`Native Wistia player is active for ${hashedId}`);
+      }
+    });
+    (window as any)._wq = _wq;
+
+    // Scan the DOM if the library is already compiled
+    if ((window as any).Wistia && (window as any).Wistia.api) {
+      (window as any).Wistia.api(hashedId);
+    }
+  }, [hashedId]);
+
+  return (
+    <div className="w-full h-full relative" ref={containerRef}>
+      <div 
+        className={`wistia_embed wistia_async_${hashedId}`} 
+        style={{ height: '100%', width: '100%', position: 'relative' }}
+      >
+        <div 
+          className="wistia_swatch" 
+          style={{ 
+            height: '100%', 
+            left: 0, 
+            opacity: 0, 
+            overflow: 'hidden', 
+            position: 'absolute', 
+            top: 0, 
+            transition: 'opacity 200ms', 
+            width: '100%' 
+          }}
+        >
+          <img 
+            className="w-full h-full object-contain"
+            src={`https://fast.wistia.com/embed/medias/${hashedId}/swatch`} 
+            style={{ filter: 'blur(5px)' }} 
+            alt="Carregando..." 
+            aria-hidden="true" 
+            onLoad={(e) => { 
+              const parent = (e.target as HTMLElement).parentElement;
+              if (parent) parent.style.opacity = '1';
+            }} 
+            referrerPolicy="no-referrer"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [openGrade, setOpenGrade] = useState<number | null>(7);
 
@@ -450,7 +521,20 @@ export default function App() {
       <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-4 text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-black mb-4">Veja como é por dentro dos <span className="text-primary italic">nossos slides</span></h2>
-          <p className="text-slate-600">Material organizado, estético e pronto para dar aula hoje mesmo.</p>
+          <p className="text-slate-600 mb-8">Material organizado, estético e pronto para dar aula hoje mesmo.</p>
+
+          {/* Video Player Card for Slide Walkthrough Presentation (16:9 widescreen) */}
+          <div className="max-w-4xl mx-auto">
+            <div className="relative bg-white rounded-3xl p-3 shadow-[0_20px_50px_-12px_rgba(59,130,246,0.15)] border border-slate-100 overflow-hidden">
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-inner">
+                <WistiaPlayer hashedId="2aubx2g64c" />
+              </div>
+              <p className="text-center text-slate-500 text-sm font-medium mt-4 flex items-center justify-center gap-2">
+                <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+                Assista ao vídeo acima para ver uma amostra grátis de um slide por dentro!
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-col gap-4">
