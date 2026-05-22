@@ -206,12 +206,13 @@ export default function App() {
                 {/* Responsive Video Container - Exact 9:20 aspect ratio (720x1600) */}
                 <div className="relative w-full overflow-hidden rounded-2xl bg-slate-900 shadow-inner" style={{ paddingBottom: '222.22%' }}>
                   <iframe
-                    src="https://fast.wistia.net/embed/iframe/obez58v202"
+                    src="https://fast.wistia.net/embed/iframe/obez58v202?videoFoam=true&preload=auto"
                     className="absolute top-0 left-0 w-full h-full border-0 select-none animate-fade-in"
                     allowFullScreen
                     scrolling="no"
                     allow="autoplay; encrypted-media"
                     referrerPolicy="no-referrer"
+                    loading="eager"
                   />
                 </div>
               </motion.div>
@@ -866,53 +867,53 @@ export default function App() {
       </section>
 
       {/* Passo a Passo de Compra e Recebimento */}
-      <section className="py-20 bg-linear-to-b from-slate-50 to-white relative overflow-hidden">
+      <section className="py-12 bg-linear-to-b from-slate-50 to-white relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           
-          <div className="text-center mb-16 max-w-2xl mx-auto space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-amber-500/10 text-[#E65C00] text-xs font-bold uppercase tracking-wider rounded-full">
+          <div className="text-center mb-8 max-w-2xl mx-auto space-y-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-0.5 bg-amber-500/10 text-[#E65C00] text-xs font-bold uppercase tracking-wider rounded-full">
               Sem Complicação
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
               Como funciona o <span className="text-primary italic font-serif">passo a passo</span>?
             </h2>
-            <p className="text-slate-600 text-base md:text-lg">
-              Desde a escolha do plano até o uso prático em sala de aula, o processo é instantâneo, seguro e muito simples.
+            <p className="text-slate-500 text-sm md:text-base">
+              Processo automático, seguro e instantâneo para começar a usar hoje mesmo.
             </p>
           </div>
 
-          {/* Steps Timeline Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+          {/* Steps Timeline Grid / Mobile horizontal scroll */}
+          <div className="flex md:grid md:grid-cols-4 gap-4 overflow-x-auto md:overflow-x-visible pb-4 md:pb-0 snap-x snap-mandatory scrollbar-none -mx-4 px-4 md:mx-0 md:px-0">
             {/* Connecting Line on Desktop */}
-            <div className="hidden md:block absolute top-[2.2rem] left-[10%] right-[10%] h-[2px] bg-slate-200/50 border-t border-dashed -z-10" />
+            <div className="hidden md:block absolute top-[1.8rem] left-[12%] right-[12%] h-[1.5px] bg-slate-200/40 border-t border-dashed -z-10" />
 
             {[
               {
                 step: "01",
                 icon: CreditCard,
                 title: "Escolha o Plano",
-                desc: "Selecione o plano ideal abaixo (Completo ou Essencial) e realize o pagamento com segurança via Cartão ou Pix.",
+                desc: "Selecione o plano ideal abaixo e faça o pagamento rápido via Pix ou Cartão.",
                 textColor: "text-emerald-600 font-bold"
               },
               {
                 step: "02",
                 icon: Mail,
                 title: "Receba o E-mail",
-                desc: "O envio é 100% automático. Assim que aprovado seu pagamento, os links chegam instantaneamente no seu e-mail.",
+                desc: "O envio é imediato. Os links do Canva e PDFs chegam direto no seu e-mail.",
                 textColor: "text-amber-600 font-bold"
               },
               {
                 step: "03",
                 icon: Layout,
                 title: "Acesse o Material",
-                desc: "Baixe os PDFs prontos para impressão direta e abra os templates do Canva para editar ou apresentar quando quiser.",
+                desc: "Baixe os PDFs prontos para impressão ou abra os templates editáveis.",
                 textColor: "text-blue-600 font-bold"
               },
               {
                 step: "04",
                 icon: Sparkles,
                 title: "Dê uma Super Aula",
-                desc: "Surpreenda seus alunos com slides dinâmicos e modernos, economizando todo o tempo de planejamento semanal.",
+                desc: "Surpreenda seus alunos com dinâmicas incríveis e poupe horas semanais.",
                 textColor: "text-primary font-bold"
               }
             ].map((item, idx) => {
@@ -920,33 +921,41 @@ export default function App() {
               return (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="bg-white rounded-3xl p-6 border border-slate-100 shadow-[0_4px_30px_-5px_rgba(0,0,0,0.01),0_10px_20px_-3px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 relative group flex flex-col justify-between"
+                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  className="w-[250px] md:w-auto shrink-0 snap-center bg-white rounded-2xl p-4 border border-slate-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.01),0_4px_10px_-2px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.04)] transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     {/* Circle Header containing Step Number & Icon */}
-                    <div className="flex justify-between items-center mb-5">
-                      <span className={`text-xs font-black tracking-wider uppercase px-2.5 py-1 rounded-lg bg-slate-50 font-mono ${item.textColor} border border-slate-100/80`}>
+                    <div className="flex justify-between items-center mb-3">
+                      <span className={`text-[10px] font-black tracking-wider uppercase px-2 py-0.5 rounded-md bg-slate-50 font-mono ${item.textColor} border border-slate-100/80`}>
                         Passo {item.step}
                       </span>
-                      <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-600 group-hover:scale-115 transition-transform duration-300 border border-slate-100/50">
-                        <IconComponent className="w-4.5 h-4.5" />
+                      <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-500 border border-slate-100/50">
+                        <IconComponent className="w-3.5 h-3.5" />
                       </div>
                     </div>
 
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">
+                    <h3 className="text-base font-bold text-slate-900 mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">
+                    <p className="text-slate-500 text-xs leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
                 </motion.div>
               );
             })}
+          </div>
+
+          {/* Swipe Indicator for Mobile */}
+          <div className="flex justify-center gap-1.5 mt-3 md:hidden">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary/80" />
+            <span className="w-1.5 h-1.5 rounded-full bg-slate-200" />
+            <span className="w-1.5 h-1.5 rounded-full bg-slate-200" />
+            <span className="w-1.5 h-1.5 rounded-full bg-slate-200" />
           </div>
 
         </div>
