@@ -25,7 +25,9 @@ import {
   Gamepad2,
   FileText,
   Award,
-  ChevronLeft
+  ChevronLeft,
+  CreditCard,
+  Mail
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -170,10 +172,10 @@ export default function App() {
     <div className="min-h-screen overflow-x-hidden">
       <SalesNotification />
       {/* Top Banner Message */}
-      <div className="bg-slate-900 text-white py-3 px-4 text-center z-50">
-        <p className="text-xs md:text-sm font-bold tracking-widest uppercase flex items-center justify-center gap-2">
-          <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-          Aproveite: <span className="text-amber-400">70% de desconto</span> disponível apenas hoje!
+      <div className="bg-orange-500 text-white py-3 px-4 text-center z-50 shadow-md">
+        <p className="text-xs md:text-sm font-extrabold tracking-widest uppercase flex items-center justify-center gap-2">
+          <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+          Oferta Especial Disponível por Tempo Limitado
         </p>
       </div>
 
@@ -185,65 +187,33 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-8">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-4">
               Tenha acesso aos <span className="text-primary">slides prontos</span> de Inglês que vão despertar a atenção dos seus alunos.
             </h1>
+            
+            <p className="text-slate-600 text-lg md:text-xl max-w-3xl mx-auto mb-8">
+              Slides 100% editáveis no Canva, com dinâmicas integradas e design moderno para economizar horas de planejamento e conquistar a atenção da sua turma.
+            </p>
 
-            {/* Infinite Carousel - Moved here for high impact */}
-            <div className="py-8 mb-10 overflow-hidden relative flex flex-col gap-4">
-              {/* Gradients para suavizar as bordas */}
-              <div className="absolute left-0 top-0 bottom-0 w-12 bg-linear-to-r from-white to-transparent z-10" />
-              <div className="absolute right-0 top-0 bottom-0 w-12 bg-linear-to-l from-white to-transparent z-10" />
-              
-              {/* Primeira Fileira - VELOCIDADE MÉDIA/LENTA para visualização */}
-              <motion.div 
-                className="flex whitespace-nowrap gap-3 items-center w-max"
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{ 
-                  duration: 20, 
-                  ease: "linear", 
-                  repeat: Infinity 
-                }}
+            {/* Video Player Card - Mobile Screen Format (720x1600) */}
+            <div className="max-w-[290px] sm:max-w-[330px] mx-auto mb-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="relative bg-white rounded-3xl p-2.5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.08)] border border-slate-200/60 overflow-hidden"
               >
-                {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
-                  <div 
-                    key={`row1-hero-${index}`} 
-                    className="w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
-                  >
-                    <img 
-                      src={img} 
-                      alt="Slide Preview" 
-                      className="rounded-lg w-full h-auto block object-contain"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                ))}
-              </motion.div>
-
-              {/* Segunda Fileira - DIREÇÃO OPOSTA */}
-              <motion.div 
-                className="flex whitespace-nowrap gap-3 items-center w-max"
-                initial={{ x: "-50%" }}
-                animate={{ x: ["-50%", "0%"] }}
-                transition={{ 
-                  duration: 40, 
-                  ease: "linear", 
-                  repeat: Infinity 
-                }}
-              >
-                {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
-                  <div 
-                    key={`row2-hero-${index}`} 
-                    className="w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
-                  >
-                    <img 
-                      src={img} 
-                      alt="Slide Preview" 
-                      className="rounded-lg w-full h-auto block object-contain"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                ))}
+                {/* Responsive Video Container - Exact 9:20 aspect ratio (720x1600) */}
+                <div className="relative w-full overflow-hidden rounded-2xl bg-slate-900 shadow-inner" style={{ paddingBottom: '222.22%' }}>
+                  <iframe
+                    src="https://fast.wistia.net/embed/iframe/obez58v202"
+                    className="absolute top-0 left-0 w-full h-full border-0 select-none animate-fade-in"
+                    allowFullScreen
+                    scrolling="no"
+                    allow="autoplay; encrypted-media"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
               </motion.div>
             </div>
 
@@ -274,8 +244,67 @@ export default function App() {
         </div>
       </section>
 
-      <section className="py-12 bg-white text-center">
-        <p className="text-slate-400 font-display font-medium tracking-widest text-sm uppercase">Materiais lúdicos, coloridos e 100% didáticos</p>
+      {/* Infinite Carousel Section - Logo após a seção Hero */}
+      <section className="bg-white py-12 overflow-hidden relative border-b border-slate-100">
+        <div className="container mx-auto px-4 text-center mb-6">
+          <p className="text-slate-400 font-display font-medium tracking-widest text-sm uppercase">Materiais lúdicos, coloridos e 100% didáticos</p>
+        </div>
+        <div className="relative flex flex-col gap-4">
+          {/* Gradients para suavizar as bordas */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-linear-to-r from-white to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-linear-to-l from-white to-transparent z-10" />
+          
+          {/* Primeira Fileira - VELOCIDADE MÉDIA/LENTA para visualização */}
+          <motion.div 
+            className="flex whitespace-nowrap gap-3 items-center w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ 
+              duration: 20, 
+              ease: "linear", 
+              repeat: Infinity 
+            }}
+          >
+            {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
+              <div 
+                key={`row1-after-hero-${index}`} 
+                className="w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+              >
+                <img 
+                  src={img} 
+                  alt="Slide Preview" 
+                  className="rounded-lg w-full h-auto block object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Segunda Fileira - DIREÇÃO OPOSTA */}
+          <motion.div 
+            className="flex whitespace-nowrap gap-3 items-center w-max"
+            initial={{ x: "-50%" }}
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{ 
+              duration: 40, 
+              ease: "linear", 
+              repeat: Infinity 
+            }}
+          >
+            {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
+              <div 
+                key={`row2-after-hero-${index}`} 
+                className="w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+              >
+                <img 
+                  src={img} 
+                  alt="Slide Preview" 
+                  className="rounded-lg w-full h-auto block object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* Benefits Section */}
@@ -445,46 +474,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Seção de Vídeo - Demonstração dos slides por dentro */}
-      <section className="py-20 bg-[#FBFBFA] border-y border-slate-100 relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-12 max-w-3xl mx-auto space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-full">
-              <Sparkles className="w-3.5 h-3.5" />
-              Vídeo de Demonstração
-            </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Assista por dentro dos <span className="text-primary italic">nossos slides</span>
-            </h2>
-            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-              Dê o play abaixo para assistir ao tour detalhado. Mostramos exatamente como a didática, as interações e a nossa estrutura de alta performance funcionam na prática.
-            </p>
-          </div>
 
-          {/* Video Player Card */}
-          <div className="max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative bg-white rounded-3xl p-3 md:p-5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.08)] border border-slate-200/60 overflow-hidden"
-            >
-              {/* Responsive Video Container */}
-              <div className="relative w-full overflow-hidden rounded-2xl bg-slate-900 shadow-inner" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  src="https://fast.wistia.net/embed/iframe/b1cf18v5kp"
-                  className="absolute top-0 left-0 w-full h-full border-0 select-none"
-                  allowFullScreen
-                  scrolling="no"
-                  allow="autoplay; encrypted-media"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* New Section: What's Inside - Dynamic Carousel */}
       <section className="py-20 bg-white overflow-hidden">
@@ -870,6 +860,93 @@ export default function App() {
                 <ChevronRight className="w-5 h-5" />
               </a>
             </motion.div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Passo a Passo de Compra e Recebimento */}
+      <section className="py-20 bg-linear-to-b from-slate-50 to-white relative overflow-hidden">
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          
+          <div className="text-center mb-16 max-w-2xl mx-auto space-y-4">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-amber-500/10 text-[#E65C00] text-xs font-bold uppercase tracking-wider rounded-full">
+              Sem Complicação
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              Como funciona o <span className="text-primary italic font-serif">passo a passo</span>?
+            </h2>
+            <p className="text-slate-600 text-base md:text-lg">
+              Desde a escolha do plano até o uso prático em sala de aula, o processo é instantâneo, seguro e muito simples.
+            </p>
+          </div>
+
+          {/* Steps Timeline Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+            {/* Connecting Line on Desktop */}
+            <div className="hidden md:block absolute top-[2.2rem] left-[10%] right-[10%] h-[2px] bg-slate-200/50 border-t border-dashed -z-10" />
+
+            {[
+              {
+                step: "01",
+                icon: CreditCard,
+                title: "Escolha o Plano",
+                desc: "Selecione o plano ideal abaixo (Completo ou Essencial) e realize o pagamento com segurança via Cartão ou Pix.",
+                textColor: "text-emerald-600 font-bold"
+              },
+              {
+                step: "02",
+                icon: Mail,
+                title: "Receba o E-mail",
+                desc: "O envio é 100% automático. Assim que aprovado seu pagamento, os links chegam instantaneamente no seu e-mail.",
+                textColor: "text-amber-600 font-bold"
+              },
+              {
+                step: "03",
+                icon: Layout,
+                title: "Acesse o Material",
+                desc: "Baixe os PDFs prontos para impressão direta e abra os templates do Canva para editar ou apresentar quando quiser.",
+                textColor: "text-blue-600 font-bold"
+              },
+              {
+                step: "04",
+                icon: Sparkles,
+                title: "Dê uma Super Aula",
+                desc: "Surpreenda seus alunos com slides dinâmicos e modernos, economizando todo o tempo de planejamento semanal.",
+                textColor: "text-primary font-bold"
+              }
+            ].map((item, idx) => {
+              const IconComponent = item.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="bg-white rounded-3xl p-6 border border-slate-100 shadow-[0_4px_30px_-5px_rgba(0,0,0,0.01),0_10px_20px_-3px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.05)] transition-all duration-300 relative group flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Circle Header containing Step Number & Icon */}
+                    <div className="flex justify-between items-center mb-5">
+                      <span className={`text-xs font-black tracking-wider uppercase px-2.5 py-1 rounded-lg bg-slate-50 font-mono ${item.textColor} border border-slate-100/80`}>
+                        Passo {item.step}
+                      </span>
+                      <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-600 group-hover:scale-115 transition-transform duration-300 border border-slate-100/50">
+                        <IconComponent className="w-4.5 h-4.5" />
+                      </div>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
         </div>
