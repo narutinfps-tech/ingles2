@@ -29,7 +29,7 @@ import {
   CreditCard,
   Mail
 } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const RECENT_SALES = [
   { name: "Ana Paula", city: "São Paulo, SP", time: "há 2 minutos" },
@@ -160,6 +160,76 @@ const INSIDE_IMAGES = [
   "https://i.ibb.co/N647P5Xh/Chat-GPT-Image-16-de-mai-de-2026-19-26-36-Copia.png"
 ];
 
+interface WistiaPlayerProps {
+  hashedId: string;
+}
+
+function WistiaPlayer({ hashedId }: WistiaPlayerProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Integrate with Wistia's asynchronous queue
+    const _wq = (window as any)._wq || [];
+    _wq.push({
+      id: hashedId,
+      options: {
+        videoFoam: false, // Maintain sizing via absolute-positioned CSS container, preventing reloading on resize
+        playsinline: true,
+        preload: "auto",
+        qualityControl: true,
+        qualityMin: "360p",
+        qualityMax: "720p",
+        resumable: false,
+        endVideoBehavior: "reset"
+      },
+      onReady: (video: any) => {
+        console.log(`Native Wistia player is active for ${hashedId}`);
+      }
+    });
+    (window as any)._wq = _wq;
+
+    // Scan the DOM if the library is already compiled
+    if ((window as any).Wistia && (window as any).Wistia.api) {
+      (window as any).Wistia.api(hashedId);
+    }
+  }, [hashedId]);
+
+  return (
+    <div className="w-full h-full relative" ref={containerRef}>
+      <div 
+        className={`wistia_embed wistia_async_${hashedId}`} 
+        style={{ height: '100%', width: '100%', position: 'relative' }}
+      >
+        <div 
+          className="wistia_swatch" 
+          style={{ 
+            height: '100%', 
+            left: 0, 
+            opacity: 0, 
+            overflow: 'hidden', 
+            position: 'absolute', 
+            top: 0, 
+            transition: 'opacity 200ms', 
+            width: '100%' 
+          }}
+        >
+          <img 
+            className="w-full h-full object-contain"
+            src={`https://fast.wistia.com/embed/medias/${hashedId}/swatch`} 
+            style={{ filter: 'blur(5px)' }} 
+            alt="Carregando..." 
+            aria-hidden="true" 
+            onLoad={(e) => { 
+              const parent = (e.target as HTMLElement).parentElement;
+              if (parent) parent.style.opacity = '1';
+            }} 
+            referrerPolicy="no-referrer"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
   const [openGrade, setOpenGrade] = useState<number | null>(7);
@@ -195,27 +265,18 @@ export default function App() {
               Slides 100% editáveis no Canva, com dinâmicas integradas e design moderno para economizar horas de planejamento e conquistar a atenção da sua turma.
             </p>
 
-            {/* Video Player Card - Mobile Screen Format (720x1600) */}
+            {/* Video Player Card - Mobile Screen Format (720x1600) - Static Container to prevent redraws */}
             <div className="max-w-[290px] sm:max-w-[330px] mx-auto mb-10">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
+              <div
                 className="relative bg-white rounded-3xl p-2.5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.08)] border border-slate-200/60 overflow-hidden"
               >
                 {/* Responsive Video Container - Exact 9:20 aspect ratio (720x1600) */}
                 <div className="relative w-full overflow-hidden rounded-2xl bg-slate-900 shadow-inner" style={{ paddingBottom: '222.22%' }}>
-                  <iframe
-                    src="https://fast.wistia.net/embed/iframe/obez58v202?videoFoam=false&playsinline=true&preload=auto&quality=auto&endVideoBehavior=reset"
-                    className="absolute top-0 left-0 w-full h-full border-0 select-none animate-fade-in"
-                    allowFullScreen
-                    scrolling="no"
-                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write"
-                    referrerPolicy="no-referrer"
-                    loading="eager"
-                  />
+                  <div className="absolute top-0 left-0 w-full h-full">
+                    <WistiaPlayer hashedId="obez58v202" />
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             <motion.div 
