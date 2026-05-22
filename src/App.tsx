@@ -160,77 +160,6 @@ const INSIDE_IMAGES = [
   "https://i.ibb.co/N647P5Xh/Chat-GPT-Image-16-de-mai-de-2026-19-26-36-Copia.png"
 ];
 
-interface WistiaPlayerProps {
-  hashedId: string;
-}
-
-function WistiaPlayer({ hashedId }: WistiaPlayerProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Integrate with Wistia's asynchronous queue
-    const _wq = (window as any)._wq || [];
-    _wq.push({
-      id: hashedId,
-      options: {
-        videoFoam: false, // Maintain sizing via absolute-positioned CSS container, preventing reloading on resize
-        playsinline: true,
-        preload: "auto",
-        qualityControl: true,
-        qualityMin: "360p",
-        qualityMax: "720p",
-        resumable: false,
-        endVideoBehavior: "reset"
-      },
-      onReady: (video: any) => {
-        console.log(`Native Wistia player is active for ${hashedId}`);
-      }
-    });
-    (window as any)._wq = _wq;
-
-    // Scan the DOM if the library is already compiled
-    if ((window as any).Wistia && (window as any).Wistia.api) {
-      (window as any).Wistia.api(hashedId);
-    }
-  }, [hashedId]);
-
-  return (
-    <div className="w-full h-full relative" ref={containerRef}>
-      <div 
-        className={`wistia_embed wistia_async_${hashedId}`} 
-        style={{ height: '100%', width: '100%', position: 'relative' }}
-      >
-        <div 
-          className="wistia_swatch" 
-          style={{ 
-            height: '100%', 
-            left: 0, 
-            opacity: 0, 
-            overflow: 'hidden', 
-            position: 'absolute', 
-            top: 0, 
-            transition: 'opacity 200ms', 
-            width: '100%' 
-          }}
-        >
-          <img 
-            className="w-full h-full object-contain"
-            src={`https://fast.wistia.com/embed/medias/${hashedId}/swatch`} 
-            style={{ filter: 'blur(5px)' }} 
-            alt="Carregando..." 
-            aria-hidden="true" 
-            onLoad={(e) => { 
-              const parent = (e.target as HTMLElement).parentElement;
-              if (parent) parent.style.opacity = '1';
-            }} 
-            referrerPolicy="no-referrer"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function App() {
   const [openGrade, setOpenGrade] = useState<number | null>(7);
 
@@ -265,18 +194,68 @@ export default function App() {
               Slides 100% editáveis no Canva, com dinâmicas integradas e design moderno para economizar horas de planejamento e conquistar a atenção da sua turma.
             </p>
 
-            {/* Video Player Card - Mobile Screen Format (720x1600) - Static Container to prevent redraws */}
-            <div className="max-w-[290px] sm:max-w-[330px] mx-auto mb-10">
-              <div
-                className="relative bg-white rounded-3xl p-2.5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.08)] border border-slate-200/60 overflow-hidden"
-              >
-                {/* Responsive Video Container - Exact 9:20 aspect ratio (720x1600) */}
-                <div className="relative w-full overflow-hidden rounded-2xl bg-slate-900 shadow-inner" style={{ paddingBottom: '222.22%' }}>
-                  <div className="absolute top-0 left-0 w-full h-full">
-                    <WistiaPlayer hashedId="obez58v202" />
-                  </div>
-                </div>
+            {/* Custom Infinite Carousel in place of the video */}
+            <div className="w-full relative overflow-hidden py-10 mb-10 border-y border-slate-100 bg-white">
+              <div className="relative flex flex-col gap-4 select-none pointer-events-none mb-6">
+                {/* Gradients to shadow the left and right borders of the infinite strip */}
+                <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
+                
+                {/* Row 1 - Slide Previews */}
+                <motion.div 
+                  className="flex whitespace-nowrap gap-3 items-center w-max"
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{ 
+                    duration: 22, 
+                    ease: "linear", 
+                    repeat: Infinity 
+                  }}
+                >
+                  {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
+                    <div 
+                      key={`row1-hero-carousel-${index}`} 
+                      className="w-[220px] sm:w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+                    >
+                      <img 
+                        src={img} 
+                        alt="Slide Preview" 
+                        className="rounded-lg w-full h-auto block object-contain"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                  ))}
+                </motion.div>
+
+                {/* Row 2 - Slide Previews opposite direction */}
+                <motion.div 
+                  className="flex whitespace-nowrap gap-3 items-center w-max"
+                  initial={{ x: "-50%" }}
+                  animate={{ x: ["-50%", "0%"] }}
+                  transition={{ 
+                    duration: 35, 
+                    ease: "linear", 
+                    repeat: Infinity 
+                  }}
+                >
+                  {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
+                    <div 
+                      key={`row2-hero-carousel-${index}`} 
+                      className="w-[220px] sm:w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
+                    >
+                      <img 
+                        src={img} 
+                        alt="Slide Preview" 
+                        className="rounded-lg w-full h-auto block object-contain"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                  ))}
+                </motion.div>
               </div>
+
+              <p className="text-slate-400 font-display font-medium tracking-widest text-xs uppercase text-center select-none mt-6">
+                Materiais lúdicos, coloridos e 100% didáticos
+              </p>
             </div>
 
             <motion.div 
@@ -302,69 +281,6 @@ export default function App() {
               <span className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-secondary" /> Acesso Imediato</span>
               <span className="flex items-center gap-2"><Sparkles className="w-5 h-5 text-secondary" /> 7 Dias de Garantia</span>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Infinite Carousel Section - Logo após a seção Hero */}
-      <section className="bg-white py-12 overflow-hidden relative border-b border-slate-100">
-        <div className="container mx-auto px-4 text-center mb-6">
-          <p className="text-slate-400 font-display font-medium tracking-widest text-sm uppercase">Materiais lúdicos, coloridos e 100% didáticos</p>
-        </div>
-        <div className="relative flex flex-col gap-4">
-          {/* Gradients para suavizar as bordas */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 bg-linear-to-r from-white to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 bg-linear-to-l from-white to-transparent z-10" />
-          
-          {/* Primeira Fileira - VELOCIDADE MÉDIA/LENTA para visualização */}
-          <motion.div 
-            className="flex whitespace-nowrap gap-3 items-center w-max"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ 
-              duration: 20, 
-              ease: "linear", 
-              repeat: Infinity 
-            }}
-          >
-            {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
-              <div 
-                key={`row1-after-hero-${index}`} 
-                className="w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
-              >
-                <img 
-                  src={img} 
-                  alt="Slide Preview" 
-                  className="rounded-lg w-full h-auto block object-contain"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Segunda Fileira - DIREÇÃO OPOSTA */}
-          <motion.div 
-            className="flex whitespace-nowrap gap-3 items-center w-max"
-            initial={{ x: "-50%" }}
-            animate={{ x: ["-50%", "0%"] }}
-            transition={{ 
-              duration: 40, 
-              ease: "linear", 
-              repeat: Infinity 
-            }}
-          >
-            {[...SLIDE_IMAGES, ...SLIDE_IMAGES].map((img, index) => (
-              <div 
-                key={`row2-after-hero-${index}`} 
-                className="w-[260px] shrink-0 bg-white p-1 rounded-xl shadow-md border border-slate-100"
-              >
-                <img 
-                  src={img} 
-                  alt="Slide Preview" 
-                  className="rounded-lg w-full h-auto block object-contain"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            ))}
           </motion.div>
         </div>
       </section>
