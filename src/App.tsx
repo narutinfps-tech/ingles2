@@ -465,7 +465,7 @@ export default function App() {
               <ul className="text-left space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
-                  <span>Mais de 70 aulas editáveis no Canva e no PowerPoint, com conteúdos do 7º, 8º e 9º ano.</span>
+                  <span>Mais de 70 aulas completas e prontas para uso, abrangendo conteúdos do 6º ao 9º ano.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
@@ -970,14 +970,14 @@ export default function App() {
                 step: "02",
                 icon: Mail,
                 title: "Receba o E-mail",
-                desc: "O envio é imediato. Os links do Canva e PDFs chegam direto no seu e-mail.",
+                desc: "O envio é imediato. Os links de acesso e PDFs chegam direto no seu e-mail.",
                 textColor: "text-amber-600 font-bold"
               },
               {
                 step: "03",
                 icon: Layout,
                 title: "Acesse o Material",
-                desc: "Baixe os PDFs prontos para impressão ou abra os templates editáveis.",
+                desc: "Baixe os PDFs e slides prontos para utilizar em sala de aula.",
                 textColor: "text-blue-600 font-bold"
               },
               {
@@ -1072,7 +1072,7 @@ export default function App() {
                     <div className="space-y-4 mb-10 text-left max-w-xs md:max-w-md mx-auto px-4">
                       {[
                         "+70 Aulas em Slides de Inglês (6º ao 9º Ano)",
-                        "Material 100% Editável no Canva",
+                        "Material Didático Completo Prontinho para Ministrar",
                         "BÔNUS: +100 Atividades de Fixação",
                         "BÔNUS: English Audio Class Pack",
                         "BÔNUS: Atividades Lúdicas Especiais",
@@ -1186,15 +1186,15 @@ export default function App() {
             {[
               {
                 q: "Como receberei o material?",
-                a: "O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com o link para baixar os materiais e os links de edição do Canva direto na plataforma."
+                a: "O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com as instruções e o link prático para baixar todos os materiais direto na plataforma."
               },
               {
-                q: "Posso editar os slides?",
-                a: "Sim! Os slides são 100% editáveis no Canva. Você pode mudar absolutamente tudo: cores, textos, imagens e adaptar para a realidade da sua turma."
+                q: "Como são apresentados os slides?",
+                a: "Os slides são entregues prontos em altíssima qualidade de resolução de imagem e design. Você pode utilizá-los de forma prática e imediata para ministrar suas aulas de inglês."
               },
               {
-                q: "Preciso ter a versão paga do Canva?",
-                a: "Não. Os materiais foram criados pensando em quem usa a versão gratuita do Canva. Você não precisará pagar nada a mais para editar ou usar."
+                q: "O pagamento é recorrente?",
+                a: "Não! O pagamento é único de apenas R$ 10,00 e você passa a ter acesso para sempre, livre de mensalidades ou qualquer outra taxa embutida."
               },
               {
                 q: "O material serve para qual série?",
