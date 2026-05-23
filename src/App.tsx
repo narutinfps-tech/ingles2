@@ -1036,128 +1036,54 @@ export default function App() {
       <section id="pricing" className="pt-10 pb-24 bg-linear-to-b from-white via-primary/5 to-white relative">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
-            {/* Two-Column Pricing Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-              
-              {/* Essential Card (R$ 10) */}
+            {/* Single Centered Pricing Card */}
+            <div className="flex justify-center">
               <motion.div 
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-[40px] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-slate-100 overflow-hidden relative flex flex-col justify-between"
+                className="bg-white rounded-[40px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)] border-2 border-primary overflow-hidden relative flex flex-col justify-between max-w-xl w-full"
               >
                 {/* Badge Flutuante */}
-                <div className="bg-slate-100 text-slate-700 px-6 py-2 font-black text-xs absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl shadow-xs z-20 whitespace-nowrap uppercase tracking-wider">
-                  Oferta Super Econômica
+                <div className="bg-primary text-white px-6 py-2 font-black text-xs absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl shadow-md z-20 whitespace-nowrap uppercase tracking-widest">
+                  🔥 OFERTA ESPECIAL DE LANÇAMENTO (90% OFF)
                 </div>
 
-                <div className="p-8 md:p-10 pt-16 text-center flex-grow flex flex-col justify-between">
+                <div className="p-8 md:p-12 pt-16 text-center flex-grow flex flex-col justify-between bg-slate-50/10">
                   <div>
-                    <h3 className="text-2xl font-display font-black text-slate-900 mb-2 leading-tight uppercase tracking-tight">
-                      Plano Essencial
+                    <h3 className="text-3xl font-display font-black text-primary mb-2 leading-tight uppercase tracking-tight">
+                      Acesso Completo
                     </h3>
-                    <div className="w-12 h-1 bg-slate-200 mx-auto rounded-full mb-8" />
+                    <div className="w-16 h-1 bg-primary/30 mx-auto rounded-full mb-8" />
 
                     {/* Preço */}
                     <div className="flex flex-col items-center justify-center mb-8">
-                      <span className="text-slate-400 line-through text-base font-medium mb-1">De R$ 47,00</span>
-                      <div className="flex items-start justify-center gap-1">
-                        <span className="text-slate-800 font-bold text-xl mt-2">R$</span>
-                        <span className="text-slate-800 font-black text-6xl md:text-7xl tracking-tighter leading-none">10,00</span>
-                      </div>
-                      <p className="inline-block mt-4 text-slate-500 font-bold bg-slate-100 px-4 py-1.5 rounded-full text-xs">
-                        Acesso Vitalício • Pagamento Único
-                      </p>
-                    </div>
-
-                    {/* Lista de Benefícios */}
-                    <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
-                      {[
-                        "Aulas de Inglês Prontas",
-                        "Material 100% Editável no Canva",
-                        "Acesso Vitalício Garantido",
-                        "Suporte Pedagógico por Chat"
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 font-semibold text-slate-700 text-sm">
-                          <div className="w-5.5 h-5.5 bg-slate-100 rounded-full flex items-center justify-center shrink-0">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-slate-500" />
-                          </div>
-                          {item}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <motion.div 
-                    animate={{ scale: [1, 1.03, 1] }}
-                    transition={{
-                      duration: 2.2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    whileHover={{ scale: 1.06 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <a 
-                      href="https://pay.cakto.com.br/mofctvj"
-                      className="w-full bg-slate-800 hover:bg-slate-900 text-white py-4.5 rounded-2xl font-black text-lg shadow-md transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
-                    >
-                      GARANTIR PLANO ESSENCIAL
-                      <ChevronRight className="w-5 h-5" />
-                    </a>
-                    <p className="mt-4 text-slate-400 text-xs flex items-center justify-center gap-1.5 font-medium">
-                      <ShieldCheck className="w-3.5 h-3.5 text-slate-500" /> Transação Segura e Criptografada
-                    </p>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              {/* Premium Card (R$ 27,90) */}
-              <motion.div 
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-[40px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)] border-2 border-secondary overflow-hidden relative flex flex-col justify-between"
-              >
-                {/* Badge Flutuante */}
-                <div className="bg-secondary text-white px-6 py-2 font-black text-xs absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl shadow-md z-20 whitespace-nowrap uppercase tracking-widest">
-                  🔥 O MAIS RECOMENDADO (70% OFF)
-                </div>
-
-                <div className="p-8 md:p-10 pt-16 text-center flex-grow flex flex-col justify-between bg-emerald-50/5">
-                  <div>
-                    <h3 className="text-2xl font-display font-black text-[#047857] mb-2 leading-tight uppercase tracking-tight">
-                      Plano Completo
-                    </h3>
-                    <div className="w-12 h-1 bg-secondary/30 mx-auto rounded-full mb-8" />
-
-                    {/* Preço Layout Corrigido */}
-                    <div className="flex flex-col items-center justify-center mb-8">
                       <span className="text-slate-400 line-through text-base font-medium mb-1">De R$ 97,00</span>
                       <div className="flex items-start justify-center gap-1">
-                        <span className="text-secondary font-bold text-xl mt-2">R$</span>
-                        <span className="text-secondary font-black text-6xl md:text-7xl tracking-tighter leading-none">27,90</span>
+                        <span className="text-primary font-bold text-xl mt-2">R$</span>
+                        <span className="text-primary font-black text-6xl md:text-7xl tracking-tighter leading-none">10,00</span>
                       </div>
-                      <p className="inline-block mt-4 text-secondary font-bold bg-secondary/10 px-4 py-1.5 rounded-full text-xs">
-                        Acesso Vitalício + Todos os Bônus Inclusos
+                      <p className="inline-block mt-4 text-primary font-bold bg-primary/10 px-4 py-1.5 rounded-full text-xs">
+                        Acesso Vitalício • Todos os Bônus Inclusos
                       </p>
                     </div>
 
                     {/* Lista de Benefícios */}
-                    <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
+                    <div className="space-y-4 mb-10 text-left max-w-xs md:max-w-md mx-auto px-4">
                       {[
-                        "+70 Aulas em Slides de Inglês",
+                        "+70 Aulas em Slides de Inglês (6º ao 9º Ano)",
                         "Material 100% Editável no Canva",
                         "BÔNUS: +100 Atividades de Fixação",
                         "BÔNUS: English Audio Class Pack",
                         "BÔNUS: Atividades Lúdicas Especiais",
-                        "Acesso Imediato no E-mail"
+                        "Acesso Vitalício Garantido",
+                        "Suporte Pedagógico por Chat"
                       ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 font-semibold text-slate-800 text-sm">
-                          <div className="w-5.5 h-5.5 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-secondary" />
+                        <div key={i} className="flex items-start gap-3 font-semibold text-slate-800 text-sm md:text-base">
+                          <div className="w-5.5 h-5.5 bg-primary/20 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
                           </div>
-                          {item}
+                          <span>{item}</span>
                         </div>
                       ))}
                     </div>
@@ -1174,19 +1100,18 @@ export default function App() {
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
-                      href="https://pay.cakto.com.br/ec4jzvs_888538"
-                      className="w-full bg-secondary hover:bg-emerald-700 text-white py-4.5 rounded-2xl font-black text-lg shadow-[0_15px_30px_-5px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
+                      href="https://pay.cakto.com.br/mofctvj"
+                      className="w-full bg-primary hover:bg-emerald-700 text-white py-4.5 rounded-2xl font-black text-lg shadow-[0_15px_30px_-5px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
-                      GARANTIR ACESSO COMPLETO
+                      QUERO GARANTIR O ACESSO COMPLETO
                       <ChevronRight className="w-5 h-5" />
                     </a>
-                    <p className="mt-4 text-slate-400 text-xs flex items-center justify-center gap-1.5 font-semibold font-medium">
-                      <ShieldCheck className="w-3.5 h-3.5 text-secondary" /> Transação Criptografada e Segura
+                    <p className="mt-4 text-slate-400 text-xs flex items-center justify-center gap-1.5 font-semibold">
+                      <ShieldCheck className="w-3.5 h-3.5 text-primary" /> Transação Criptografada e 100% Segura
                     </p>
                   </motion.div>
                 </div>
               </motion.div>
-
             </div>
 
             {/* Garantia Section - Institutional Trust Design */}
@@ -1365,34 +1290,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-
-      {/* Floating WhatsApp Button with Loop Animation */}
-      <motion.a
-        href="https://wa.me/559884335718"
-        target="_blank"
-        rel="noopener noreferrer"
-        animate={{ 
-          scale: [1, 1.08, 1],
-          y: [0, -4, 0]
-        }}
-        transition={{
-          duration: 2.5,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        whileHover={{ scale: 1.15 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.3)] transition-all duration-300 flex items-center justify-center group cursor-pointer"
-        aria-label="Fale conosco no WhatsApp"
-      >
-        <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-white rounded-full animate-bounce flex items-center justify-center text-[8px] font-bold text-white select-none">
-          1
-        </span>
-        <MessageCircle className="w-6 h-6 fill-white text-[#25D366]" />
-        <span className="max-w-0 overflow-hidden group-hover:max-w-md transition-all duration-300 ease-out font-black text-sm whitespace-nowrap hidden lg:inline-block">
-          <span className="pl-2 pr-1">Dúvidas? Fale conosco!</span>
-        </span>
-      </motion.a>
 
     </div>
   );
