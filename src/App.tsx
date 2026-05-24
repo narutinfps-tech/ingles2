@@ -231,6 +231,16 @@ function WistiaPlayer({ hashedId }: WistiaPlayerProps) {
   );
 }
 
+const TESTIMONIAL_IMAGES = [
+  "https://i.ibb.co/B2z14PbD/Whats-App-Image-2026-05-17-at-18-44-10.jpg",
+  "https://i.ibb.co/Q3V0GzLH/Whats-App-Image-2026-05-17-at-18-44-09-2.jpg",
+  "https://i.ibb.co/Sw6KLrLP/Chat-GPT-Image-23-de-mai-de-2026-21-37-19.png",
+  "https://i.ibb.co/tpGDSdbv/Chat-GPT-Image-23-de-mai-de-2026-21-37-08.png",
+  "https://i.ibb.co/wFpX1Jdf/Chat-GPT-Image-23-de-mai-de-2026-21-48-54.png",
+  "https://i.ibb.co/XxJWDjj6/Whats-App-Image-2026-05-17-at-18-44-09-1.jpg",
+  "https://i.ibb.co/nN3tG2FJ/Whats-App-Image-2026-05-17-at-18-44-09.jpg"
+];
+
 export default function App() {
   const [openGrade, setOpenGrade] = useState<string | null>("fundamental-6-7");
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -241,7 +251,7 @@ export default function App() {
     const itemWidth = container.querySelector('.snap-center')?.clientWidth || container.clientWidth;
     const computedIndex = Math.round(scrollLeft / itemWidth);
     if (activeTestimonial !== computedIndex) {
-      setActiveTestimonial(Math.max(0, Math.min(5, computedIndex)));
+      setActiveTestimonial(Math.max(0, Math.min(TESTIMONIAL_IMAGES.length - 1, computedIndex)));
     }
   };
 
@@ -701,14 +711,7 @@ export default function App() {
             onScroll={handleTestimonialScroll}
             className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-8 md:pb-0 scrollbar-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory -mx-4 px-4 md:mx-auto md:px-0 max-w-6xl"
           >
-            {[
-              "https://i.ibb.co/B2z14PbD/Whats-App-Image-2026-05-17-at-18-44-10.jpg",
-              "https://i.ibb.co/Q3V0GzLH/Whats-App-Image-2026-05-17-at-18-44-09-2.jpg",
-              "https://i.ibb.co/Sw6KLrLP/Chat-GPT-Image-23-de-mai-de-2026-21-37-19.png",
-              "https://i.ibb.co/tpGDSdbv/Chat-GPT-Image-23-de-mai-de-2026-21-37-08.png",
-              "https://i.ibb.co/XxJWDjj6/Whats-App-Image-2026-05-17-at-18-44-09-1.jpg",
-              "https://i.ibb.co/nN3tG2FJ/Whats-App-Image-2026-05-17-at-18-44-09.jpg"
-            ].map((img, idx) => (
+            {TESTIMONIAL_IMAGES.map((img, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -738,7 +741,7 @@ export default function App() {
 
           {/* Interactive Navigation Dots for Mobile */}
           <div className="flex md:hidden items-center justify-center gap-2.5 mt-6">
-            {[0, 1, 2, 3, 4, 5].map((idx) => (
+            {TESTIMONIAL_IMAGES.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
@@ -1089,83 +1092,10 @@ export default function App() {
       <section id="pricing" className="pt-10 pb-24 bg-linear-to-b from-white via-primary/5 to-white relative">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
-            {/* Two-Column Pricing Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
+            {/* Centered Pricing Card */}
+            <div className="max-w-md mx-auto">
               
-              {/* Essential Card (R$ 10,00) */}
-              <motion.div 
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-[40px] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-slate-200 overflow-hidden relative flex flex-col justify-between"
-              >
-                {/* Floating Badge */}
-                <div className="bg-slate-100 text-slate-700 px-6 py-2 font-black text-xs absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl shadow-xs z-20 whitespace-nowrap uppercase tracking-wider">
-                  Oferta Prática
-                </div>
-
-                <div className="p-8 md:p-10 pt-16 text-center flex-grow flex flex-col justify-between bg-slate-50/5">
-                  <div>
-                    <h3 className="text-2xl font-display font-black text-slate-900 mb-2 leading-tight uppercase tracking-tight">
-                      Plano Essencial
-                    </h3>
-                    <div className="w-12 h-1 bg-slate-200 mx-auto rounded-full mb-8" />
-
-                    {/* Price */}
-                    <div className="flex flex-col items-center justify-center mb-8">
-                      <span className="text-slate-400 line-through text-base font-medium mb-1">De R$ 47,00</span>
-                      <div className="flex items-start justify-center gap-1">
-                        <span className="text-slate-800 font-bold text-xl mt-2">R$</span>
-                        <span className="text-slate-800 font-black text-6xl md:text-7xl tracking-tighter leading-none">10,00</span>
-                      </div>
-                      <p className="inline-block mt-4 text-slate-500 font-bold bg-slate-100 px-4 py-1.5 rounded-full text-xs">
-                        Acesso Vitalício • Material Prático
-                      </p>
-                    </div>
-
-                    {/* Benefits List */}
-                    <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
-                      {[
-                        "+70 Aulas em Slides (Fundamental e Médio)",
-                        "Material Didático Completo Prontinho para Ministrar",
-                        "Acesso Vitalício Garantido",
-                        "Suporte por E-mail"
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-start gap-3 font-semibold text-slate-700 text-sm">
-                          <div className="w-5.5 h-5.5 bg-slate-100 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-slate-500" />
-                          </div>
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <motion.div 
-                    animate={{ scale: [1, 1.03, 1] }}
-                    transition={{
-                      duration: 2.2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    whileHover={{ scale: 1.06 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <a 
-                      href="https://pay.cakto.com.br/mofctvj"
-                      className="w-full bg-slate-800 hover:bg-slate-900 text-white py-4.5 rounded-2xl font-black text-lg shadow-md transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
-                    >
-                      QUERO O PLANO ESSENCIAL
-                      <ChevronRight className="w-5 h-5" />
-                    </a>
-                    <p className="mt-4 text-slate-400 text-xs flex items-center justify-center gap-1.5 font-medium">
-                      <ShieldCheck className="w-3.5 h-3.5 text-slate-500" /> Transação Segura e Criptografada
-                    </p>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              {/* Premium Card (R$ 27,90) */}
+              {/* Card de Preço Único (R$ 10,00) */}
               <motion.div 
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -1174,25 +1104,25 @@ export default function App() {
               >
                 {/* Floating Badge */}
                 <div className="bg-primary text-white px-6 py-2 font-black text-xs absolute top-0 left-1/2 -translate-x-1/2 rounded-b-2xl shadow-md z-20 whitespace-nowrap uppercase tracking-widest">
-                  🔥 O MAIS RECOMENDADO (TODOS OS BÔNUS)
+                  🔥 OFERTA DE LANÇAMENTO
                 </div>
 
                 <div className="p-8 md:p-10 pt-16 text-center flex-grow flex flex-col justify-between bg-slate-50/10">
                   <div>
                     <h3 className="text-2xl font-display font-black text-primary mb-2 leading-tight uppercase tracking-tight">
-                      Acesso Completo
+                      Acesso Vitalício
                     </h3>
                     <div className="w-12 h-1 bg-primary/30 mx-auto rounded-full mb-8" />
 
                     {/* Price */}
                     <div className="flex flex-col items-center justify-center mb-8">
-                      <span className="text-slate-400 line-through text-base font-medium mb-1">De R$ 97,00</span>
+                      <span className="text-slate-400 line-through text-base font-medium mb-1">De R$ 47,00</span>
                       <div className="flex items-start justify-center gap-1">
                         <span className="text-primary font-bold text-xl mt-2">R$</span>
-                        <span className="text-primary font-black text-6xl md:text-7xl tracking-tighter leading-none">27,90</span>
+                        <span className="text-primary font-black text-6xl md:text-7xl tracking-tighter leading-none">10,00</span>
                       </div>
                       <p className="inline-block mt-4 text-primary font-bold bg-primary/10 px-4 py-1.5 rounded-full text-xs">
-                        Acesso Vitalício • Todos os Bônus Inclusos
+                        Pagamento Único • Sem Mensalidades
                       </p>
                     </div>
 
@@ -1201,11 +1131,8 @@ export default function App() {
                       {[
                         "+70 Aulas em Slides (Fundamental e Médio)",
                         "Material Didático Completo Prontinho para Ministrar",
-                        "BÔNUS: +100 Atividades de Fixação",
-                        "BÔNUS: English Audio Class Pack",
-                        "BÔNUS: Atividades Lúdicas Especiais",
                         "Acesso Vitalício Garantido",
-                        "Suporte Pedagógico por Chat"
+                        "Suporte por E-mail"
                       ].map((item, i) => (
                         <div key={i} className="flex items-start gap-3 font-semibold text-slate-800 text-sm">
                           <div className="w-5.5 h-5.5 bg-primary/20 rounded-full flex items-center justify-center shrink-0 mt-0.5">
@@ -1228,10 +1155,10 @@ export default function App() {
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
-                      href="https://pay.cakto.com.br/ec4jzvs_888538"
+                      href="https://pay.cakto.com.br/mofctvj"
                       className="w-full bg-primary hover:bg-emerald-700 text-white py-4.5 rounded-2xl font-black text-lg shadow-[0_15px_30px_-5px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
-                      QUERO GARANTIR O ACESSO COMPLETO
+                      QUERO GARANTIR O MEU ACESSO
                       <ChevronRight className="w-5 h-5" />
                     </a>
                     <p className="mt-4 text-slate-400 text-xs flex items-center justify-center gap-1.5 font-semibold">
