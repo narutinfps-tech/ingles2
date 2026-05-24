@@ -29,7 +29,7 @@ import {
   CreditCard,
   Mail
 } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const RECENT_SALES = [
   { name: "Ana Paula", city: "São Paulo, SP", time: "há 2 minutos" },
@@ -233,6 +233,17 @@ function WistiaPlayer({ hashedId }: WistiaPlayerProps) {
 
 export default function App() {
   const [openGrade, setOpenGrade] = useState<string | null>("fundamental-6-7");
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const handleTestimonialScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const container = e.currentTarget;
+    const scrollLeft = container.scrollLeft;
+    const itemWidth = container.querySelector('.snap-center')?.clientWidth || container.clientWidth;
+    const computedIndex = Math.round(scrollLeft / itemWidth);
+    if (activeTestimonial !== computedIndex) {
+      setActiveTestimonial(Math.max(0, Math.min(5, computedIndex)));
+    }
+  };
 
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
@@ -685,7 +696,11 @@ export default function App() {
             </p>
           </div>
 
-          <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-8 md:pb-0 scrollbar-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory -mx-4 px-4 md:mx-auto md:px-0 max-w-6xl">
+          <div 
+            id="testimonials-container"
+            onScroll={handleTestimonialScroll}
+            className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-8 md:pb-0 scrollbar-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory -mx-4 px-4 md:mx-auto md:px-0 max-w-6xl"
+          >
             {[
               "https://i.ibb.co/B2z14PbD/Whats-App-Image-2026-05-17-at-18-44-10.jpg",
               "https://i.ibb.co/Q3V0GzLH/Whats-App-Image-2026-05-17-at-18-44-09-2.jpg",
@@ -721,8 +736,36 @@ export default function App() {
             ))}
           </div>
 
+          {/* Interactive Navigation Dots for Mobile */}
+          <div className="flex md:hidden items-center justify-center gap-2.5 mt-6">
+            {[0, 1, 2, 3, 4, 5].map((idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => {
+                  const container = document.getElementById('testimonials-container');
+                  if (container) {
+                    const itemWidth = container.querySelector('.snap-center')?.clientWidth || container.clientWidth;
+                    // Slightly adjust for padding / gaps if needed, but itemWidth * scale is standard
+                    container.scrollTo({
+                      left: idx * itemWidth,
+                      behavior: 'smooth'
+                    });
+                  }
+                  setActiveTestimonial(idx);
+                }}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  activeTestimonial === idx 
+                    ? "w-8 bg-primary shadow-xs" 
+                    : "w-2.5 bg-slate-200 hover:bg-slate-300"
+                }`}
+                aria-label={`Visualizar depoimento ${idx + 1}`}
+              />
+            ))}
+          </div>
+
           {/* Touch Swiping Helper Indicator */}
-          <div className="flex md:hidden items-center justify-center gap-1.5 mt-8 text-slate-400 font-bold">
+          <div className="flex md:hidden items-center justify-center gap-1.5 mt-5 text-slate-400 font-bold">
             <ChevronLeft className="w-4 h-4 animate-pulse text-primary/70" />
             <span className="text-xs uppercase tracking-wider">Arraste para o lado para ver todos</span>
             <ChevronRight className="w-4 h-4 animate-pulse text-primary/70" />
