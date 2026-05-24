@@ -232,7 +232,7 @@ function WistiaPlayer({ hashedId }: WistiaPlayerProps) {
 }
 
 export default function App() {
-  const [openGrade, setOpenGrade] = useState<number | null>(7);
+  const [openGrade, setOpenGrade] = useState<string | null>("fundamental-6-7");
 
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
@@ -453,7 +453,7 @@ export default function App() {
       <section className="py-24 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl mb-12">
-            A <span className="bg-white text-primary px-3 rounded-lg">Academia de Inglês</span> é uma plataforma online com materiais prontos para professores de Ensino Fundamental II.
+            A <span className="bg-white text-primary px-3 rounded-lg">Academia de Inglês</span> é uma plataforma online com materiais prontos para professores de Ensino Fundamental e Ensino Médio.
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -465,7 +465,7 @@ export default function App() {
               <ul className="text-left space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
-                  <span>Mais de 70 aulas completas e prontas para uso, abrangendo conteúdos do 6º ao 9º ano.</span>
+                  <span>Mais de 70 aulas completas e prontas para uso, abrangendo conteúdos do Ensino Fundamental e Ensino Médio.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
@@ -629,30 +629,31 @@ export default function App() {
           </div>
 
           <div className="space-y-4">
-            {[7, 8, 9].map((grade) => (
-              <div key={grade} className="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
+            {[
+              { id: "fundamental-6-7", title: "6º e 7º ANO - ENSINO FUNDAMENTAL", items: ["Greetings & Introductions", "Verb To Be (Affirmative/Negative/Interrogative)", "Pronouns & Possessive Adjectives", "Genitive Case & Family Members", "Simple Present Tense", "Adjectives & Opposites", "Insects & Animals Vocabulary", "School Objects & Places"] },
+              { id: "fundamental-8-9", title: "8º e 9º ANO - ENSINO FUNDAMENTAL", items: ["Verb To Have (All Forms)", "Prepositions of Place & Time", "Adverbs of Frequency", "Present Continuous Tense", "Modal Verbs: Can / Could", "Regular & Irregular Verbs", "Simple Past Tense", "Future with Will & Going To"] },
+              { id: "medio", title: "1º ao 3º ANO - ENSINO MÉDIO", items: ["Present Perfect Tense", "Conditionals (Zero, First, Second)", "Reported Speech basics", "Passive Voice & Active Voice", "Relative Pronouns", "Modal Verbs: Must, Should, May, Might", "Reading Comprehension & Text Interpretation", "Vocabulary Building & False Cognates"] },
+            ].map((section) => (
+              <div key={section.id} className="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
                 <button 
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    setOpenGrade(openGrade === grade ? null : grade);
+                    setOpenGrade(openGrade === section.id ? null : section.id);
                   }}
                   className="w-full flex items-center justify-between p-6 bg-primary text-white font-display font-bold text-xl cursor-pointer"
                 >
-                  {grade}º ANO - ENSINO FUNDAMENTAL
-                  <ChevronDown className={`w-6 h-6 transition-transform ${openGrade === grade ? 'rotate-180' : ''}`} />
+                  {section.title}
+                  <ChevronDown className={`w-6 h-6 transition-transform ${openGrade === section.id ? 'rotate-180' : ''}`} />
                 </button>
-                {openGrade === grade && (
+                {openGrade === section.id && (
                   <div className="p-8 grid md:grid-cols-2 gap-4">
-                    {grade === 7 && [
-                      "Greetings & Introductions", "Verb To Be (Affirmative/Negative/Interrogative)", "Pronouns", "Genitive Case", "Simple Present", "Adjectives"
-                    ].map(item => <div key={item} className="text-slate-600 flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> {item}</div>)}
-                    {grade === 8 && [
-                      "Verb To Have", "Prepositions", "Adverbs of Frequency", "Present Continuous", "Can / Could", "Regular/Irregular Verbs"
-                    ].map(item => <div key={item} className="text-slate-600 flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> {item}</div>)}
-                    {grade === 9 && [
-                      "Simple Past", "Future (Will/Going to)", "Present Perfect", "Conditionals (First/Second)", "Reported Speech", "Passive Voice"
-                    ].map(item => <div key={item} className="text-slate-600 flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> {item}</div>)}
+                    {section.items.map(item => (
+                      <div key={item} className="text-slate-600 flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
@@ -684,21 +685,23 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-8 md:pb-0 scrollbar-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory -mx-4 px-4 md:mx-auto md:px-0 max-w-6xl">
             {[
               "https://i.ibb.co/B2z14PbD/Whats-App-Image-2026-05-17-at-18-44-10.jpg",
               "https://i.ibb.co/Q3V0GzLH/Whats-App-Image-2026-05-17-at-18-44-09-2.jpg",
+              "https://i.ibb.co/Sw6KLrLP/Chat-GPT-Image-23-de-mai-de-2026-21-37-19.png",
+              "https://i.ibb.co/tpGDSdbv/Chat-GPT-Image-23-de-mai-de-2026-21-37-08.png",
               "https://i.ibb.co/XxJWDjj6/Whats-App-Image-2026-05-17-at-18-44-09-1.jpg",
               "https://i.ibb.co/nN3tG2FJ/Whats-App-Image-2026-05-17-at-18-44-09.jpg"
             ].map((img, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.02, zIndex: 30 }}
-                className="relative bg-white p-3 rounded-3xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden transition-all duration-500 cursor-zoom-in"
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                whileHover={{ scale: 1.02, zIndex: 10 }}
+                className="snap-center shrink-0 w-[85vw] sm:w-[400px] md:w-full md:shrink relative bg-white p-3 rounded-3xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden transition-all duration-500 cursor-zoom-in"
               >
                 <div className="absolute inset-0 bg-linear-to-t from-slate-900/10 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
                 <img 
@@ -716,6 +719,13 @@ export default function App() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Touch Swiping Helper Indicator */}
+          <div className="flex md:hidden items-center justify-center gap-1.5 mt-8 text-slate-400 font-bold">
+            <ChevronLeft className="w-4 h-4 animate-pulse text-primary/70" />
+            <span className="text-xs uppercase tracking-wider">Arraste para o lado para ver todos</span>
+            <ChevronRight className="w-4 h-4 animate-pulse text-primary/70" />
           </div>
 
           <div className="mt-16 text-center">
@@ -1073,7 +1083,7 @@ export default function App() {
                     {/* Benefits List */}
                     <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
                       {[
-                        "+70 Aulas em Slides de Inglês (6º ao 9º Ano)",
+                        "+70 Aulas em Slides (Fundamental e Médio)",
                         "Material Didático Completo Prontinho para Ministrar",
                         "Acesso Vitalício Garantido",
                         "Suporte por E-mail"
@@ -1146,7 +1156,7 @@ export default function App() {
                     {/* Benefits List */}
                     <div className="space-y-4 mb-10 text-left max-w-[285px] mx-auto">
                       {[
-                        "+70 Aulas em Slides de Inglês (6º ao 9º Ano)",
+                        "+70 Aulas em Slides (Fundamental e Médio)",
                         "Material Didático Completo Prontinho para Ministrar",
                         "BÔNUS: +100 Atividades de Fixação",
                         "BÔNUS: English Audio Class Pack",
@@ -1274,7 +1284,7 @@ export default function App() {
               },
               {
                 q: "O material serve para qual série?",
-                a: "O foco principal é o Ensino Fundamental II (6º ao 9º ano), mas os tópicos de gramática são a base necessária para qualquer nível iniciante (A1/A2)."
+                a: "O material é ideal tanto para o Ensino Fundamental quanto para o Ensino Médio, abrangendo toda a gramática essencial e vocabulários de forma dinâmica, visual e super prática para qualquer um desses níveis."
               },
               {
                 q: "Por quanto tempo terei acesso?",
