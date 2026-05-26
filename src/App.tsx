@@ -1155,7 +1155,7 @@ export default function App() {
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
-                      href="https://pay.cakto.com.br/mofctvj"
+                      href="https://pay.wiapy.com/5CNNlEhBU5"
                       className="w-full bg-slate-800 hover:bg-slate-900 text-white py-4.5 rounded-2xl font-black text-lg shadow-md transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
                       QUERO O PLANO ESSENCIAL
@@ -1168,7 +1168,7 @@ export default function App() {
                 </div>
               </motion.div>
 
-              {/* Premium Card (R$ 19,90) */}
+              {/* Premium Card (R$ 27,90) */}
               <motion.div 
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -1192,7 +1192,7 @@ export default function App() {
                       <span className="text-slate-400 line-through text-base font-medium mb-1">De R$ 97,00</span>
                       <div className="flex items-start justify-center gap-1">
                         <span className="text-primary font-bold text-xl mt-2">R$</span>
-                        <span className="text-primary font-black text-6xl md:text-7xl tracking-tighter leading-none">19,90</span>
+                        <span className="text-primary font-black text-6xl md:text-7xl tracking-tighter leading-none">27,90</span>
                       </div>
                       <p className="inline-block mt-4 text-primary font-bold bg-primary/10 px-4 py-1.5 rounded-full text-xs">
                         Acesso Vitalício • Todos os Bônus Inclusos
@@ -1231,7 +1231,7 @@ export default function App() {
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
-                      href="https://pay.cakto.com.br/vyvsdxb"
+                      href="https://pay.wiapy.com/TD-oOaHtx"
                       className="w-full bg-primary hover:bg-emerald-700 text-white py-4.5 rounded-2xl font-black text-lg shadow-[0_15px_30px_-5px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
                       QUERO GARANTIR O ACESSO COMPLETO
