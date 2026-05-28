@@ -1122,14 +1122,14 @@ export default function App() {
                         <span className="text-slate-800 font-black text-6xl md:text-7xl tracking-tighter leading-none">10,00</span>
                       </div>
                       <p className="inline-block mt-4 text-slate-500 font-bold bg-slate-100 px-4 py-1.5 rounded-full text-xs">
-                        Acesso Vitalício • Material Prático
+                        Materiais Disponíveis Imediatamente
                       </p>
                     </div>
 
                     {/* Benefits List */}
                     <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
                       {[
-                        "+70 Aulas em Slides (Fundamental e Médio)",
+                        "+70 Aulas em Slides (Cerca de 10 a 15 páginas por aula, conforme complexidade)",
                         "Material Didático Completo Prontinho para Ministrar",
                         "Acesso Vitalício Garantido",
                         "Suporte por E-mail"
@@ -1161,9 +1161,14 @@ export default function App() {
                       QUERO O PLANO ESSENCIAL
                       <ChevronRight className="w-5 h-5" />
                     </a>
-                    <p className="mt-4 text-slate-400 text-xs flex items-center justify-center gap-1.5 font-medium">
-                      <ShieldCheck className="w-3.5 h-3.5 text-slate-500" /> Transação Segura e Criptografada
-                    </p>
+                    <div className="mt-4 flex flex-col items-center justify-center gap-1">
+                      <p className="text-emerald-600 text-xs font-bold animate-pulse flex items-center gap-1">
+                        ⚡ Receba imediatamente no seu E-mail e WhatsApp!
+                      </p>
+                      <p className="text-slate-400 text-[10px] flex items-center justify-center gap-1.5 font-medium">
+                        <ShieldCheck className="w-3 h-3 text-slate-500" /> Transação Segura e Criptografada
+                      </p>
+                    </div>
                   </motion.div>
                 </div>
               </motion.div>
@@ -1195,14 +1200,14 @@ export default function App() {
                         <span className="text-primary font-black text-6xl md:text-7xl tracking-tighter leading-none">27,90</span>
                       </div>
                       <p className="inline-block mt-4 text-primary font-bold bg-primary/10 px-4 py-1.5 rounded-full text-xs">
-                        Acesso Vitalício • Todos os Bônus Inclusos
+                        Bônus Inclusos • Acesso Vitalício
                       </p>
                     </div>
 
                     {/* Benefits List */}
                     <div className="space-y-4 mb-10 text-left max-w-[285px] mx-auto">
                       {[
-                        "+70 Aulas em Slides (Fundamental e Médio)",
+                        "+70 Aulas em Slides (Cerca de 10 a 15 páginas por aula, conforme complexidade)",
                         "Material Didático Completo Prontinho para Ministrar",
                         "BÔNUS: +100 Atividades de Fixação",
                         "BÔNUS: English Audio Class Pack",
@@ -1237,9 +1242,14 @@ export default function App() {
                       QUERO GARANTIR O ACESSO COMPLETO
                       <ChevronRight className="w-5 h-5" />
                     </a>
-                    <p className="mt-4 text-slate-400 text-xs flex items-center justify-center gap-1.5 font-semibold">
-                      <ShieldCheck className="w-3.5 h-3.5 text-primary" /> Transação Criptografada e 100% Segura
-                    </p>
+                    <div className="mt-4 flex flex-col items-center justify-center gap-1">
+                      <p className="text-emerald-600 text-xs font-bold animate-pulse flex items-center gap-1">
+                        ⚡ Receba imediatamente no seu E-mail e WhatsApp!
+                      </p>
+                      <p className="text-slate-400 text-[10px] flex items-center justify-center gap-1.5 font-semibold">
+                        <ShieldCheck className="w-3 h-3 text-primary" /> Transação Criptografada e 100% Segura
+                      </p>
+                    </div>
                   </motion.div>
                 </div>
               </motion.div>
@@ -1318,11 +1328,11 @@ export default function App() {
             {[
               {
                 q: "Como receberei o material?",
-                a: "O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com as instruções e o link prático para baixar todos os materiais direto na plataforma."
+                a: "O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail e uma mensagem personalizada no WhatsApp com o link imediato para baixar todos os materiais e começar a utilizar."
               },
               {
                 q: "Como são apresentados os slides?",
-                a: "Os slides são entregues prontos em altíssima qualidade de resolução de imagem e design. Você pode utilizá-los de forma prática e imediata para ministrar suas aulas de inglês."
+                a: "Cada tema de slide conta com cerca de 10 a 15 páginas, variando de acordo com o grau de complexidade do assunto pedagógico. São entregues prontos em altíssima resolução, ideais para suas aulas."
               },
               {
                 q: "O pagamento é recorrente?",
