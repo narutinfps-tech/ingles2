@@ -24,6 +24,7 @@ import {
   Play,
   Gamepad2,
   FileText,
+  Gift,
   Award,
   ChevronLeft,
   CreditCard,
@@ -365,6 +366,19 @@ export default function App() {
                 <ChevronRight className="w-6 h-6" />
               </a>
             </motion.div>
+
+            {/* Free Sample Secondary CTA */}
+            <div className="mt-5">
+              <a 
+                href="https://drive.google.com/file/d/1ygekcCRHR65N-GOhU6xWIgeKArXAFCC-/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-slate-700 hover:text-primary hover:bg-slate-50 font-bold text-sm bg-white/80 backdrop-blur-xs px-6 py-3 rounded-full transition-all border border-slate-200/80 shadow-xs hover:border-primary/30"
+              >
+                <Download className="w-4 h-4 text-primary animate-pulse" />
+                <span>Baixar Amostra Grátis (.pdf)</span>
+              </a>
+            </div>
 
             <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-500">
               <span className="flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-secondary" /> Compra Segura</span>
@@ -1085,6 +1099,51 @@ export default function App() {
             <span className="w-1.5 h-1.5 rounded-full bg-slate-200" />
           </div>
 
+        </div>
+      </section>
+
+      {/* Free Sample - High Conversion Banner Section */}
+      <section className="py-12 bg-linear-to-b from-slate-50 to-white relative">
+        <div className="container mx-auto px-4 max-w-4xl relative z-10">
+          <div className="bg-radial from-amber-50/50 to-white rounded-[2.5rem] p-8 md:p-10 border border-amber-200/50 shadow-[0_15px_40px_-20px_rgba(217,119,6,0.15)] flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+            <div className="absolute right-0 bottom-0 top-0 w-1/3 opacity-[0.03] bg-[radial-gradient(#E65C00_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none hidden md:block" />
+            
+            <div className="shrink-0 w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center shadow-xs border border-amber-500/20">
+              <Gift className="w-8 h-8 text-amber-600 animate-bounce" />
+            </div>
+            
+            <div className="flex-grow text-center md:text-left space-y-2">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-500/10 text-amber-700 text-xs font-black uppercase tracking-wider rounded-md">
+                🎁 Teste Grátis
+              </span>
+              <h3 className="text-xl md:text-2xl font-black text-slate-800 tracking-tight">
+                Quer ver a qualidade dos slides antes de comprar?
+              </h3>
+              <p className="text-slate-500 text-xs md:text-sm leading-relaxed max-w-2xl">
+                Baixe uma <strong>amostra grátis 100% editável</strong> diretamente pelo Google Drive. Sinta o design, a organização pedagógica e tenha total segurança.
+              </p>
+            </div>
+            
+            <div className="shrink-0 w-full md:w-auto text-center">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <a 
+                  href="https://drive.google.com/file/d/1ygekcCRHR65N-GOhU6xWIgeKArXAFCC-/view?usp=sharing"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-extrabold px-6 py-4 rounded-xl text-base shadow-md hover:shadow-lg transition-all cursor-pointer no-underline"
+                >
+                  <Download className="w-4 h-4 shrink-0" />
+                  BAIXAR AMOSTRA GRÁTIS
+                </a>
+              </motion.div>
+              <p className="text-[10px] text-slate-400 mt-1.5 font-bold">
+                Arquivo .pdf do original no Drive
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
