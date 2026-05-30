@@ -233,6 +233,7 @@ function WistiaPlayer({ hashedId }: WistiaPlayerProps) {
 }
 
 const TESTIMONIAL_IMAGES = [
+  "https://i.ibb.co/p6Gqs2v7/Whats-App-Image-2026-05-29-at-10-10-44.jpg",
   "https://i.ibb.co/B2z14PbD/Whats-App-Image-2026-05-17-at-18-44-10.jpg",
   "https://i.ibb.co/Q3V0GzLH/Whats-App-Image-2026-05-17-at-18-44-09-2.jpg",
   "https://i.ibb.co/Sw6KLrLP/Chat-GPT-Image-23-de-mai-de-2026-21-37-19.png",
@@ -1214,7 +1215,7 @@ export default function App() {
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
-                      href="https://pay.wiapy.com/5CNNlEhBU5"
+                      href="https://pay.cakto.com.br/mofctvj"
                       className="w-full bg-slate-800 hover:bg-slate-900 text-white py-4.5 rounded-2xl font-black text-lg shadow-md transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
                       QUERO O PLANO ESSENCIAL
@@ -1295,7 +1296,7 @@ export default function App() {
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
-                      href="https://pay.wiapy.com/TD-oOaHtx"
+                      href="https://pay.cakto.com.br/ec4jzvs_888538"
                       className="w-full bg-primary hover:bg-emerald-700 text-white py-4.5 rounded-2xl font-black text-lg shadow-[0_15px_30px_-5px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
                       QUERO GARANTIR O ACESSO COMPLETO
@@ -1491,6 +1492,29 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <motion.a
+        href="https://wa.me/559884335718"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1.5, type: "spring", stiffness: 260, damping: 20 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white p-4 rounded-full shadow-[0_10px_25px_-5px_rgba(16,185,129,0.5)] hover:bg-emerald-600 transition-all duration-300 flex items-center justify-center group cursor-pointer"
+        aria-label="Chamar no WhatsApp"
+      >
+        <span className="absolute right-full mr-3 bg-slate-950 text-white text-xs font-black px-3.5 py-2 rounded-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-md border border-slate-800">
+          Dúvidas? Fale conosco! 💬
+        </span>
+        <div className="relative">
+          <MessageCircle className="w-7 h-7 fill-white/10" />
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 border-2 border-emerald-500 rounded-full animate-ping" />
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 border-2 border-emerald-500 rounded-full" />
+        </div>
+      </motion.a>
 
     </div>
   );
