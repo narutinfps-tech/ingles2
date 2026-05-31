@@ -443,6 +443,7 @@ export default function App() {
                     src="https://i.ibb.co/dw9d17zW/7ca6897b-0234-4924-b33d-f4b259bd64f6-Photoroom.png" 
                     alt="Premium Material Mockup" 
                     className="w-full h-auto block"
+                    loading="lazy"
                   />
                   
                   {/* Floating badge */}
@@ -599,6 +600,7 @@ export default function App() {
                   alt="Material detalhe" 
                   className="rounded-xl w-full h-auto block"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -624,6 +626,7 @@ export default function App() {
                   alt="Material detalhe" 
                   className="rounded-xl w-full h-auto block"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -851,6 +854,7 @@ export default function App() {
                     alt="Bônus 100 Atividades" 
                     className="max-h-full object-contain drop-shadow-md rounded-lg"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                 </div>
 
@@ -904,6 +908,7 @@ export default function App() {
                     alt="Bônus English Audio Class Pack" 
                     className="w-full h-auto drop-shadow-xl select-none"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                 </div>
 
@@ -957,6 +962,7 @@ export default function App() {
                     alt="Bônus Atividades Lúdicas Especiais" 
                     className="w-full h-auto drop-shadow-xl select-none"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                 </div>
 
