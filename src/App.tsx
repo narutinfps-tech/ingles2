@@ -371,7 +371,7 @@ export default function App() {
             {/* Free Sample Secondary CTA */}
             <div className="mt-5">
               <a 
-                href="https://drive.google.com/file/d/1ygekcCRHR65N-GOhU6xWIgeKArXAFCC-/view?usp=sharing"
+                href="https://drive.google.com/file/d/1fBrjs6y-4n70ovvYqj0SdhBxmzq2i_ER/view?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-slate-700 hover:text-primary hover:bg-slate-50 font-bold text-sm bg-white/80 backdrop-blur-xs px-6 py-3 rounded-full transition-all border border-slate-200/80 shadow-xs hover:border-primary/30"
@@ -1137,7 +1137,7 @@ export default function App() {
                 whileTap={{ scale: 0.95 }}
               >
                 <a 
-                  href="https://drive.google.com/file/d/1ygekcCRHR65N-GOhU6xWIgeKArXAFCC-/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1fBrjs6y-4n70ovvYqj0SdhBxmzq2i_ER/view?usp=sharing"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-extrabold px-6 py-4 rounded-xl text-base shadow-md hover:shadow-lg transition-all cursor-pointer no-underline"
