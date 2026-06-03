@@ -247,6 +247,76 @@ export default function App() {
   const [openGrade, setOpenGrade] = useState<string | null>("fundamental-6-7");
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
+  // Dynamic UTM parameters propagation state for correct Utmify / analytic tracker capture
+  const [checkoutUrls, setCheckoutUrls] = useState({
+    essencial: "https://pay.wiapy.com/5CNNlEhBU5",
+    completo: "https://pay.wiapy.com/TD-oOaHtx"
+  });
+
+  useEffect(() => {
+    const applyUtms = () => {
+      try {
+        const queryParams = new URLSearchParams(window.location.search);
+        
+        // Define tracking variables commonly used by Utmify, Google, Meta, and ticketing platforms
+        const keys = [
+          'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+          'src', 'sck', 'subid', 'xcod', 'origin', 'fbclid', 'gclid'
+        ];
+
+        // Cookie fetch helper
+        const getCookieVal = (name: string) => {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop()?.split(';').shift();
+          return null;
+        };
+
+        // Populate any missing values from localStorage, sessionStorage, or custom cookies
+        keys.forEach(key => {
+          if (!queryParams.has(key)) {
+            const stored = localStorage.getItem(key) || sessionStorage.getItem(key) || getCookieVal(key);
+            if (stored) {
+              queryParams.set(key, stored);
+            }
+          }
+        });
+
+        // Apply parameter tracking to checkout links
+        const targetEssencial = new URL("https://pay.wiapy.com/5CNNlEhBU5");
+        const targetCompleto = new URL("https://pay.wiapy.com/TD-oOaHtx");
+
+        queryParams.forEach((value, key) => {
+          if (value) {
+            targetEssencial.searchParams.set(key, value);
+            targetCompleto.searchParams.set(key, value);
+          }
+        });
+
+        setCheckoutUrls({
+          essencial: targetEssencial.toString(),
+          completo: targetCompleto.toString()
+        });
+      } catch (err) {
+        console.error("Error building UTM tracking checkout URLs:", err);
+      }
+    };
+
+    // Run immediately
+    applyUtms();
+
+    // Utmify might asynchronously write cookies/localStorage, so check and apply again
+    const t1 = setTimeout(applyUtms, 500);
+    const t2 = setTimeout(applyUtms, 1500);
+    const t3 = setTimeout(applyUtms, 3000);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, []);
+
   const handleTestimonialScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const container = e.currentTarget;
     const scrollLeft = container.scrollLeft;
@@ -1221,7 +1291,7 @@ export default function App() {
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
-                      href="https://pay.wiapy.com/5CNNlEhBU5"
+                      href={checkoutUrls.essencial}
                       className="w-full bg-slate-800 hover:bg-slate-900 text-white py-4.5 rounded-2xl font-black text-lg shadow-md transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
                       QUERO O PLANO ESSENCIAL
@@ -1302,7 +1372,7 @@ export default function App() {
                     whileTap={{ scale: 0.98 }}
                   >
                     <a 
-                      href="https://pay.wiapy.com/TD-oOaHtx"
+                      href={checkoutUrls.completo}
                       className="w-full bg-primary hover:bg-emerald-700 text-white py-4.5 rounded-2xl font-black text-lg shadow-[0_15px_30px_-5px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
                       QUERO GARANTIR O ACESSO COMPLETO
