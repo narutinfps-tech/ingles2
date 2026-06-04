@@ -1471,8 +1471,12 @@ export default function App() {
                 a: "Cada tema de slide conta com cerca de 10 a 15 páginas, variando de acordo com o grau de complexidade do assunto pedagógico. São entregues prontos em altíssima resolução, ideais para suas aulas."
               },
               {
-                q: "O pagamento é recorrente?",
-                a: "Não! O pagamento é único (conforme o plano escolhido, a partir de apenas R$ 10,00) e você passa a ter acesso para sempre, livre de mensalidades ou qualquer outra taxa embutida."
+                q: "O pagamento é único?",
+                a: "Sim! O pagamento é único, pago apenas uma vez (conforme o plano escolhido, a partir de apenas R$ 10,00). Você passa a ter acesso para sempre, livre de mensalidades ou qualquer outra taxa recorrente."
+              },
+              {
+                q: "Posso imprimir os slides?",
+                a: "Sim, com certeza! Os slides são entregues em alta resolução, permitindo que você faça a impressão com excelente qualidade para usar como apostilas, atividades em papel ou materiais didáticos de apoio físico para os seus alunos."
               },
               {
                 q: "O material serve para qual série?",
