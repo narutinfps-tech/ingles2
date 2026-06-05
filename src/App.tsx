@@ -568,11 +568,11 @@ export default function App() {
               <div className="bg-white/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Download className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl mb-4 text-emerald-300 font-black tracking-tight">+ DE 70 AULAS PRONTAS</h3>
+              <h3 className="text-2xl mb-4 text-emerald-300 font-black tracking-tight">VÁRIAS AULAS PRONTAS</h3>
               <ul className="text-left space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
-                  <span>Mais de 70 aulas completas e prontas para uso, abrangendo conteúdos do Ensino Fundamental e Ensino Médio.</span>
+                  <span>Várias aulas completas e prontas para uso, abrangendo conteúdos do Ensino Fundamental e Ensino Médio.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
@@ -1265,7 +1265,7 @@ export default function App() {
                     {/* Benefits List */}
                     <div className="space-y-4 mb-10 text-left max-w-[280px] mx-auto">
                       {[
-                        "+70 Aulas em Slides (Cerca de 10 a 15 páginas por aula, conforme complexidade)",
+                        "Várias Aulas em Slides (Cerca de 10 a 15 páginas por aula, conforme complexidade)",
                         "Material Didático Completo Prontinho para Ministrar",
                         "Acesso Vitalício Garantido",
                         "Suporte por E-mail"
@@ -1343,7 +1343,7 @@ export default function App() {
                     {/* Benefits List */}
                     <div className="space-y-4 mb-10 text-left max-w-[285px] mx-auto">
                       {[
-                        "+70 Aulas em Slides (Cerca de 10 a 15 páginas por aula, conforme complexidade)",
+                        "Várias Aulas em Slides (Cerca de 10 a 15 páginas por aula, conforme complexidade)",
                         "Material Didático Completo Prontinho para Ministrar",
                         "BÔNUS: +100 Atividades de Fixação",
                         "BÔNUS: English Audio Class Pack",
