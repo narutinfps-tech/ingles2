@@ -243,6 +243,12 @@ const TESTIMONIAL_IMAGES = [
   "https://i.ibb.co/nN3tG2FJ/Whats-App-Image-2026-05-17-at-18-44-09.jpg"
 ];
 
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 export default function App() {
   const [openGrade, setOpenGrade] = useState<string | null>("fundamental-6-7");
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -316,6 +322,25 @@ export default function App() {
       clearTimeout(t3);
     };
   }, []);
+
+  const handleCheckoutClick = (
+    e: React.MouseEvent,
+    checkoutUrl: string,
+    value?: number
+  ) => {
+    e.preventDefault();
+
+    if (window.fbq) {
+      window.fbq("track", "InitiateCheckout", {
+        value: value,
+        currency: "BRL"
+      });
+    }
+
+    setTimeout(() => {
+      window.location.href = checkoutUrl;
+    }, 500);
+  };
 
   const handleTestimonialScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const container = e.currentTarget;
@@ -1292,6 +1317,7 @@ export default function App() {
                   >
                     <a 
                       href={checkoutUrls.essencial}
+                      onClick={(e) => handleCheckoutClick(e, checkoutUrls.essencial, 10.00)}
                       className="w-full bg-slate-800 hover:bg-slate-900 text-white py-4.5 rounded-2xl font-black text-lg shadow-md transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
                       QUERO O PLANO ESSENCIAL
@@ -1373,6 +1399,7 @@ export default function App() {
                   >
                     <a 
                       href={checkoutUrls.completo}
+                      onClick={(e) => handleCheckoutClick(e, checkoutUrls.completo, 27.90)}
                       className="w-full bg-primary hover:bg-emerald-700 text-white py-4.5 rounded-2xl font-black text-lg shadow-[0_15px_30px_-5px_rgba(16,185,129,0.3)] transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
                       QUERO GARANTIR O ACESSO COMPLETO
@@ -1464,11 +1491,11 @@ export default function App() {
             {[
               {
                 q: "Como receberei o material?",
-                a: "O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail e uma mensagem personalizada no WhatsApp com o link imediato para baixar todos os materiais e começar a utilizar."
+                a: "O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail e uma mensagem personalizada no WhatsApp com o link imediato para baixar todos os materiais em formato PDF de alta qualidade e prontos para uso."
               },
               {
                 q: "Como são apresentados os slides?",
-                a: "Cada tema de slide conta com cerca de 10 a 15 páginas, variando de acordo com o grau de complexidade do assunto pedagógico. São entregues prontos em altíssima resolução, ideais para suas aulas."
+                a: "Cada tema de slide vem em formato PDF estruturado com cerca de 10 a 15 páginas, variando de acordo com o grau de complexidade do assunto pedagógico. São entregues prontos em altíssima resolução, ideais para suas aulas."
               },
               {
                 q: "O pagamento é único?",
@@ -1476,15 +1503,15 @@ export default function App() {
               },
               {
                 q: "Posso imprimir os slides?",
-                a: "Sim, com certeza! Os slides são entregues em alta resolução, permitindo que você faça a impressão com excelente qualidade para usar como apostilas, atividades em papel ou materiais didáticos de apoio físico para os seus alunos."
+                a: "Sim, com certeza! Os slides e materiais são entregues em formato PDF de alta resolução, permitindo que você faça a impressão com excelente qualidade para usar como apostilas, atividades em papel ou materiais didáticos de apoio físico para os seus alunos."
               },
               {
                 q: "O material serve para qual série?",
-                a: "O material é ideal tanto para o Ensino Fundamental quanto para o Ensino Médio, abrangendo toda a gramática essencial e vocabulários de forma dinâmica, visual e super prática para qualquer um desses níveis."
+                a: "O material em PDF é ideal tanto para o Ensino Fundamental quanto para o Ensino Médio, abrangendo toda a gramática essencial e vocabulários de forma dinâmica, visual e super prática para qualquer um desses níveis."
               },
               {
                 q: "Por quanto tempo terei acesso?",
-                a: "O acesso é vitalício. Uma vez adquirido, o material é seu para sempre, incluindo as atualizações que fizermos nesta coleção."
+                a: "O acesso é vitalício. Uma vez adquirido, o material em PDF é seu para sempre, incluindo as atualizações que fizermos nesta coleção."
               }
             ].map((faq, idx) => (
               <motion.div 
