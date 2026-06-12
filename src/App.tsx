@@ -1536,47 +1536,6 @@ export default function App() {
               </motion.div>
             ))}
           </div>
-
-          {/* Interactive Support Block */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="mt-16 bg-linear-to-br from-slate-900 to-slate-800 p-8 md:p-12 rounded-[3rem] shadow-2xl relative overflow-hidden group"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-3xl -mr-32 -mt-32 rounded-full" />
-            
-            <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
-              <div className="relative">
-                <div className="w-24 h-24 rounded-full bg-slate-700 border-4 border-slate-600 p-1 overflow-hidden">
-                   <div className="w-full h-full rounded-full bg-primary flex items-center justify-center text-3xl">👋</div>
-                </div>
-                <div className="absolute bottom-1 right-1 w-6 h-6 bg-emerald-500 border-4 border-slate-800 rounded-full animate-pulse" />
-              </div>
-
-              <div className="text-center md:text-left flex-1">
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">Ainda tem dúvidas?</h3>
-                <p className="text-slate-300 text-lg mb-6">Estou online agora para te ajudar a tomar a melhor decisão!</p>
-                <motion.a 
-                  href="https://wa.me/559884335718" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  animate={{ scale: [1, 1.04, 1] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  whileHover={{ scale: 1.08 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-lg transition-all shadow-lg hover:shadow-emerald-500/20 cursor-pointer no-underline"
-                >
-                  <MessageCircle className="w-6 h-6" />
-                  CHAMAR NO WHATSAPP
-                </motion.a>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -1592,36 +1551,12 @@ export default function App() {
             <div className="flex gap-8 text-sm font-medium text-slate-500">
                <a href="#" className="hover:text-primary">Termos de Uso</a>
                <a href="#" className="hover:text-primary">Privacidade</a>
-               <a href="https://wa.me/559884335718" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Ajuda</a>
             </div>
 
             <p className="text-sm text-slate-400">© 2024 Academia de Inglês. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
-
-      {/* Floating WhatsApp Button */}
-      <motion.a
-        href="https://wa.me/559884335718"
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 1.5, type: "spring", stiffness: 260, damping: 20 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white p-4 rounded-full shadow-[0_10px_25px_-5px_rgba(16,185,129,0.5)] hover:bg-emerald-600 transition-all duration-300 flex items-center justify-center group cursor-pointer"
-        aria-label="Chamar no WhatsApp"
-      >
-        <span className="absolute right-full mr-3 bg-slate-950 text-white text-xs font-black px-3.5 py-2 rounded-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-md border border-slate-800">
-          Dúvidas? Fale conosco! 💬
-        </span>
-        <div className="relative">
-          <MessageCircle className="w-7 h-7 fill-white/10" />
-          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 border-2 border-emerald-500 rounded-full animate-ping" />
-          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 border-2 border-emerald-500 rounded-full" />
-        </div>
-      </motion.a>
 
     </div>
   );
