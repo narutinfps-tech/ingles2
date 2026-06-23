@@ -255,8 +255,8 @@ export default function App() {
 
   // Dynamic UTM parameters propagation state for correct Utmify / analytic tracker capture
   const [checkoutUrls, setCheckoutUrls] = useState({
-    essencial: "https://pay.wiapy.com/5CNNlEhBU5",
-    completo: "https://pay.wiapy.com/TD-oOaHtx"
+    essencial: "https://pay.cakto.com.br/vyvsdxb",
+    completo: "https://pay.cakto.com.br/ec4jzvs_888538"
   });
 
   useEffect(() => {
@@ -289,8 +289,8 @@ export default function App() {
         });
 
         // Apply parameter tracking to checkout links
-        const targetEssencial = new URL("https://pay.wiapy.com/5CNNlEhBU5");
-        const targetCompleto = new URL("https://pay.wiapy.com/TD-oOaHtx");
+        const targetEssencial = new URL("https://pay.cakto.com.br/vyvsdxb");
+        const targetCompleto = new URL("https://pay.cakto.com.br/ec4jzvs_888538");
 
         queryParams.forEach((value, key) => {
           if (value) {
@@ -1256,7 +1256,7 @@ export default function App() {
             {/* Two-Column Pricing Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
               
-              {/* Essential Card (R$ 10,00) */}
+              {/* Essential Card (R$ 19,90) */}
               <motion.div 
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -1280,7 +1280,7 @@ export default function App() {
                       <span className="text-slate-400 line-through text-base font-medium mb-1">De R$ 47,00</span>
                       <div className="flex items-start justify-center gap-1">
                         <span className="text-slate-800 font-bold text-xl mt-2">R$</span>
-                        <span className="text-slate-800 font-black text-6xl md:text-7xl tracking-tighter leading-none">10,00</span>
+                        <span className="text-slate-800 font-black text-6xl md:text-7xl tracking-tighter leading-none">19,90</span>
                       </div>
                       <p className="inline-block mt-4 text-slate-500 font-bold bg-slate-100 px-4 py-1.5 rounded-full text-xs">
                         Materiais Disponíveis Imediatamente
@@ -1317,7 +1317,7 @@ export default function App() {
                   >
                     <a 
                       href={checkoutUrls.essencial}
-                      onClick={(e) => handleCheckoutClick(e, checkoutUrls.essencial, 10.00)}
+                      onClick={(e) => handleCheckoutClick(e, checkoutUrls.essencial, 19.90)}
                       className="w-full bg-slate-800 hover:bg-slate-900 text-white py-4.5 rounded-2xl font-black text-lg shadow-md transition-all flex items-center justify-center gap-2 active:translate-y-1 cursor-pointer no-underline"
                     >
                       QUERO O PLANO ESSENCIAL
@@ -1499,7 +1499,7 @@ export default function App() {
               },
               {
                 q: "O pagamento é único?",
-                a: "Sim! O pagamento é único, pago apenas uma vez (conforme o plano escolhido, a partir de apenas R$ 10,00). Você passa a ter acesso para sempre, livre de mensalidades ou qualquer outra taxa recorrente."
+                a: "Sim! O pagamento é único, pago apenas uma vez (conforme o plano escolhido, a partir de apenas R$ 19,90). Você passa a ter acesso para sempre, livre de mensalidades ou qualquer outra taxa recorrente."
               },
               {
                 q: "Posso imprimir os slides?",
